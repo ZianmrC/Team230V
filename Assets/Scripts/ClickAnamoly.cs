@@ -1,7 +1,16 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ClickAnamoly : MonoBehaviour
 {
+
+    private GameObject EventManager;
+    ElectricityOverload electricityOverload;
+    private void Start()
+    {
+        EventManager = GameObject.Find("EventSystem");
+        electricityOverload = EventManager.GetComponent<ElectricityOverload>();
+    }
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -14,6 +23,8 @@ public class ClickAnamoly : MonoBehaviour
                 if (hit.collider.gameObject == gameObject)
                 {
                     Destroy(gameObject); //Destroy object for now, in further development, this will spawn task
+                    //gameObject.SetActive(false)
+                    electricityOverload.CountTasks();
                 }
             }
         }

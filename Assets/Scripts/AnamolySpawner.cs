@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class AnomalySpawner : MonoBehaviour
+public class AnamolySpawner : MonoBehaviour
 {
     public Transform[] anomalyLocations = new Transform[0];
     public static bool[] occupiedAnomalyLocations;
@@ -12,32 +13,45 @@ public class AnomalySpawner : MonoBehaviour
     public GameObject LVTask; //Living Room Task
     public GameObject BRTask; //Bathroom Task
 
-    public float maxSpawnTime;
+    public float maxSpawnTime; //Gurantees to spawn an anamoly if one hasn't spawned after a particular amount of time
     public float percentageIncrementInterval;
     public float percentageIncrement; //Used to increase the chances of spawning at every interval
     public float spawnChance = 10f;
 
-    private float spawnTimer;
+    private float timeSinceLastSpawn;
+    private GameObject EventManager;
+    ElectricityOverload electricityOverload;
     // Start is called before the first frame update
     void Start()
     {
         occupiedAnomalyLocations = new bool[anomalyLocations.Length];
-
+        EventManager = GameObject.Find("EventSystem");
+        electricityOverload = EventManager.GetComponent<ElectricityOverload>();
     }
 
     // Update is called once per frame
     void Update()
     {
         //Spawning Anamoly
-        spawnTimer += Time.deltaTime;
-        if (spawnTimer > percentageIncrementInterval) //Chance to Spawn anamoly after number of seconds
+        timeSinceLastSpawn += Time.deltaTime;
+        if (timeSinceLastSpawn > percentageIncrementInterval) //Chance to Spawn anamoly after number of seconds
         {
             float randomFloat = Random.Range(0.0f, 100f);
-            if (randomFloat > spawnChance)
+            //Debug.Log($"Random Float: {randomFloat}, spawnChance: {spawnChance}");
+            if(timeSinceLastSpawn >= maxSpawnTime)
             {
                 SpawnAnamoly();
             }
-            spawnTimer = 0f;
+            else if (randomFloat < spawnChance)
+            {
+                SpawnAnamoly();
+                spawnChance = 10f;
+            }
+            else
+            {
+                spawnChance += percentageIncrement;
+            }
+            timeSinceLastSpawn = 0f;
         }
 
 
@@ -72,9 +86,9 @@ public class AnomalySpawner : MonoBehaviour
             }
             else
             {
-                Debug.Log("spawn repeated");
                 SpawnAnamoly();
             }
         }
+        electricityOverload.CountTasks();
     }
 }
