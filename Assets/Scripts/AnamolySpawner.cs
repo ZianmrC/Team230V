@@ -9,6 +9,7 @@ public class AnamolySpawner : MonoBehaviour
 {
     public Transform[] anomalyLocations = new Transform[0];
     public static bool[] occupiedAnomalyLocations;
+    public static List<int> availableSpots = new List<int>();
     public GameObject KTask; //Kitchen Task
     public GameObject LVTask; //Living Room Task
     public GameObject BRTask; //Bathroom Task
@@ -17,16 +18,25 @@ public class AnamolySpawner : MonoBehaviour
     public float percentageIncrementInterval;
     public float percentageIncrement; //Used to increase the chances of spawning at every interval
     public float spawnChance = 10f;
+    private float originalChance;
 
     private float timeSinceLastSpawn;
     private GameObject EventManager;
-    ElectricityOverload electricityOverload;
+    EventManager eventManager;
     // Start is called before the first frame update
     void Start()
     {
+        originalChance = spawnChance;
         occupiedAnomalyLocations = new bool[anomalyLocations.Length];
+        for(int i = 0; i<anomalyLocations.Length; i++)
+        {
+            occupiedAnomalyLocations[i] = false;
+            availableSpots.Add(i);
+        }
         EventManager = GameObject.Find("EventSystem");
-        electricityOverload = EventManager.GetComponent<ElectricityOverload>();
+        eventManager = EventManager.GetComponent<EventManager>();
+
+
     }
 
     // Update is called once per frame
@@ -38,14 +48,14 @@ public class AnamolySpawner : MonoBehaviour
         {
             float randomFloat = Random.Range(0.0f, 100f);
             //Debug.Log($"Random Float: {randomFloat}, spawnChance: {spawnChance}");
-            if(timeSinceLastSpawn >= maxSpawnTime)
+            if(timeSinceLastSpawn >= maxSpawnTime) //100% to spawn anomaly after given time
             {
                 SpawnAnamoly();
             }
             else if (randomFloat < spawnChance)
             {
                 SpawnAnamoly();
-                spawnChance = 10f;
+                spawnChance = originalChance;
             }
             else
             {
@@ -60,35 +70,49 @@ public class AnamolySpawner : MonoBehaviour
     }
     public void SpawnAnamoly()
     {
-        int randomLocation = Random.Range(0, anomalyLocations.Length);
+        if (availableSpots.Count == 0)
+        {
+            Debug.Log("All Tasks are present");
+            return;
+        }
+
+        int randomIndex = Random.Range(0, availableSpots.Count);
+        int randomLocation1 = availableSpots[randomIndex];
+        int randomLocation = randomLocation1;
+        availableSpots.RemoveAt(randomIndex);
+
+        //Debugging
+        //Debug.Log($"Available spots count: {availableSpots.Count}");
+        //Debug.Log($"Selected random location: {randomLocation}");
+        if (occupiedAnomalyLocations[randomLocation] == false)
+        {
+            //Debug.Log($"Selected spot is not occupied. Spawning anomaly...");
+        }
+        else
+        {
+            //Debug.Log($"Selected spot is occupied. Trying again...");
+        }
+
         if (occupiedAnomalyLocations[randomLocation] == false)
         {
             occupiedAnomalyLocations[randomLocation] = true; //Signify that task is already at spawn location
             if (randomLocation < 3)
             {
-                Instantiate(KTask, anomalyLocations[randomLocation]);
+                InstantiateAnomaly(KTask, anomalyLocations[randomLocation], randomLocation);
             }
             else if (randomLocation < 6)
             {
-                Instantiate(LVTask, anomalyLocations[randomLocation]);
+                InstantiateAnomaly(LVTask, anomalyLocations[randomLocation], randomLocation);
             }
             else if (randomLocation < 9)
             {
-                Instantiate(BRTask, anomalyLocations[randomLocation]);
+                InstantiateAnomaly(BRTask, anomalyLocations[randomLocation], randomLocation);
             }
         }
-        else
-        {
-            if (occupiedAnomalyLocations.All(element => element))
-            {
-                Debug.Log("All Tasks are present");
-                return;
-            }
-            else
-            {
-                SpawnAnamoly();
-            }
-        }
-        electricityOverload.CountTasks();
+    }
+    void InstantiateAnomaly(GameObject anomaly, Transform location, int taskID)
+    {
+        anomaly.GetComponent<TaskInfo>().taskID = taskID;
+        Instantiate(anomaly, location);
     }
 }

@@ -4,11 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class ElectricityOverload : MonoBehaviour
+public class EventManager : MonoBehaviour
 {
     public TextMeshProUGUI text;
 
-    private int taskCounter = 0;
+    public static int taskCounter = 0;
+    public static float TotalGameTime;
     private float updateTimer;
     private float percentage;
     // Start is called before the first frame update
@@ -19,16 +20,21 @@ public class ElectricityOverload : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        updateTimer += Time.deltaTime;
+        updateTimer += Time.deltaTime; TotalGameTime += Time.deltaTime;
         if(updateTimer > 1.5f)
         {
+            CountTasks();
             if(taskCounter == 0 && percentage > 0f) //If there are no tasks currently, decrease the overload bar
             {
                 percentage--;
             }
-            percentage += taskCounter;
+            else if (taskCounter > 0)
+            {
+                percentage += taskCounter;
+            }
             text.text = $"Electricity Overload: {percentage}%";
             updateTimer = 0f;
+            //Debug.Log($"Task Counter: {taskCounter}");
         }
     }
     public void CountTasks()
@@ -36,6 +42,13 @@ public class ElectricityOverload : MonoBehaviour
         GameObject[] taskObjects = GameObject.FindGameObjectsWithTag("Task");
 
         taskCounter = taskObjects.Length;
+        //Debug.Log($"Number of tasks currently found: {taskCounter}");
+        /*
+        foreach (var taskObject in taskObjects)
+        {
+            Debug.Log($"Task object name: {taskObject.name}");
+        }
+        */
     }
 
 }

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1956056860664417246}
   - component: {fileID: 1094955447244511925}
   - component: {fileID: 1965931929637389046}
+  - component: {fileID: -7619677553407301718}
   m_Layer: 0
   m_Name: LivingRoomAnamoly (Placeholder)
   m_TagString: Task
@@ -110,4 +111,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b63469d0651224142898884f959e9363, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  taskPuzzle: {fileID: 0}
+--- !u!114 &-7619677553407301718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6958922126443529715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdd83a45e9ad6bd458f1b0779e5b6b54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  taskTimer: 0
+  taskID: 0

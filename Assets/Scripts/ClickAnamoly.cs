@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -5,11 +6,17 @@ public class ClickAnamoly : MonoBehaviour
 {
 
     private GameObject EventManager;
-    ElectricityOverload electricityOverload;
+    private TaskInfo taskInfo;
+    private Canvas canvas;
+    private RectTransform rectTransform;
+    public GameObject task;
+    EventManager eventManager;
     private void Start()
     {
         EventManager = GameObject.Find("EventSystem");
-        electricityOverload = EventManager.GetComponent<ElectricityOverload>();
+        eventManager = EventManager.GetComponent<EventManager>();
+        taskInfo = GetComponent<TaskInfo>();
+        canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
     }
     void Update()
     {
@@ -22,9 +29,14 @@ public class ClickAnamoly : MonoBehaviour
             {
                 if (hit.collider.gameObject == gameObject)
                 {
+                    GameObject instantiatedObject = Instantiate(task);
+                    instantiatedObject.transform.SetParent(canvas.transform, false);
+                    RectTransform instantiatedRT= instantiatedObject.GetComponent<RectTransform>();
+                    instantiatedRT.anchoredPosition = Vector2.zero;
+
                     Destroy(gameObject); //Destroy object for now, in further development, this will spawn task
                     //gameObject.SetActive(false)
-                    electricityOverload.CountTasks();
+                    taskInfo.UpdateBoolArray();
                 }
             }
         }

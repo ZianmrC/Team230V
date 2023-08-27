@@ -58,7 +58,9 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\ClickAnamoly.cs" />
     <Compile Include="Assets\Scripts\AnamolySpawner.cs" />
-    <Compile Include="Assets\Scripts\ElectricityOverload.cs" />
+    <Compile Include="Assets\Scripts\EventManager.cs" />
+    <Compile Include="Assets\Scripts\TaskInfo.cs" />
+    <Compile Include="Assets\Scripts\AnomalyScripts\GeneralSwitches.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
