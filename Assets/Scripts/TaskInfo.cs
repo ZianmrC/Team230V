@@ -27,9 +27,9 @@ public class TaskInfo : MonoBehaviour
     public void UpdateBoolArray() //Updates the bool array which dictates if a task is currently there or not
     {
         AnamolySpawner.occupiedAnomalyLocations[taskID] = false;
-        Debug.Log($"Positioned freed: {taskID}");
+        //Debug.Log($"Positioned freed: {taskID}");
         AnamolySpawner.availableSpots.Add(taskID);
-        Debug.Log($"Available spots count after update: {AnamolySpawner.availableSpots.Count}");
+        //Debug.Log($"Available spots count after update: {AnamolySpawner.availableSpots.Count}");
     }
     public void UpdateID(int id)
     {

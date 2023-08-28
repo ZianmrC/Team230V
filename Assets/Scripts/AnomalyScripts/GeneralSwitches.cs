@@ -52,7 +52,6 @@ public class GeneralSwitches : MonoBehaviour
         //Place Images onto empty UI
         for (int i = 0; i < inputsRequired; i++)
         {
-            Debug.Log("testtttttttt");
             int index = inputs[i];
             InstantiateImage(positions[i], inputImageArray[index]);
         }
@@ -68,30 +67,34 @@ public class GeneralSwitches : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.UpArrow) && inputs[currentStep] == 0)
                 {
                     correctSequence[currentStep] = 2;
-                    Debug.Log("test1");
                     currentStep++;
                     waiting = false;
+                    Debug.Log("Up Inputted");
                 }
                 else if (Input.GetKeyDown(KeyCode.RightArrow) && inputs[currentStep] == 1)
                 {
                     correctSequence[currentStep] = 2;
-                    Debug.Log("test2");
                     currentStep++;
                     waiting = false;
+                    Debug.Log("Right Inputted");
                 }
                 else if (Input.GetKeyDown(KeyCode.DownArrow) && inputs[currentStep] == 2)
                 {
                     correctSequence[currentStep] = 2;
-                    Debug.Log("test3");
                     currentStep++;
                     waiting = false;
+                    Debug.Log("Down Inputted");
                 }
                 else if (Input.GetKeyDown(KeyCode.LeftArrow) && inputs[currentStep] == 3)
                 {
                     correctSequence[currentStep] = 2;
-                    Debug.Log("test4");
                     currentStep++;
                     waiting = false;
+                    Debug.Log("Left Inputted");
+                }
+                else if(!waiting)
+                {
+                    correctSequence[currentStep] = 1;
                 }
                 bool allTrue = correctSequence.All(b => b == 2);
                 bool hasOne = correctSequence.Any(item => item == 1);
@@ -100,8 +103,9 @@ public class GeneralSwitches : MonoBehaviour
                     Debug.Log("Task Completed!");
                     Destroy(gameObject);
                 }
-                else if(hasOne)
+                else if(hasOne) //If incorrect input detected
                 {
+                    Debug.Log("Try again from the start!");
                     for(int i = 0; i < correctSequence.Count; i++)
                     {
                         correctSequence[i] = 0;
