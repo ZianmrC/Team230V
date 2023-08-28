@@ -12,6 +12,8 @@ public class EventManager : MonoBehaviour
     public static float TotalGameTime;
     private float updateTimer;
     private float percentage;
+    public TextMeshProUGUI taskCounterText;
+    public int numberOfTasksUntilOverload = 2; //The minimum number of tasks present in order to start incrementing the Electricity Overlaod
     // Start is called before the first frame update
     void Start()
     {
@@ -20,17 +22,19 @@ public class EventManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CountTasks();
+        taskCounterText.text = $"{taskCounter}";
         updateTimer += Time.deltaTime; TotalGameTime += Time.deltaTime;
         if(updateTimer > 1.5f)
         {
-            CountTasks();
+            //CountTasks();
             if(taskCounter == 0 && percentage > 0f) //If there are no tasks currently, decrease the overload bar
             {
                 percentage--;
             }
-            else if (taskCounter > 0)
+            else if (taskCounter > 0 && taskCounter >= numberOfTasksUntilOverload)
             {
-                percentage += taskCounter;
+                percentage += (taskCounter - 1);
             }
             text.text = $"Electricity Overload: {percentage}%";
             updateTimer = 0f;

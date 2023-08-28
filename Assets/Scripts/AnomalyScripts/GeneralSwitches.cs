@@ -4,18 +4,24 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 using TMPro;
+using System;
 
 public class GeneralSwitches : MonoBehaviour
 {
     private GameObject manager;
     EventManager eventManager;
     private int inputsRequired;
-    public float difficulty1Time; //Make this type of activity harder when the total game time has surpassed this amount of time
+    private TextMeshProUGUI timerText;
 
+    public float difficulty1Time; //Make this type of activity harder when the total game time has surpassed this amount of time
     private int[] inputs;
     private bool waiting;
+    private float timer = 4;
+    public float maxTime = 4f; //The maximum time allowed for player to input correct sequence before having to try again
     public GameObject[] inputImageArray;
-    private Vector2[] positions;
+    public GameObject greenCheck;
+    private Vector2[] positions; //Positions of Image Pictures
+    private Vector2[] greenCheckPositions; //Positions of Green Checks - used to indicate which inputs the player has already done
     private bool holdingDown = false;
     private int currentStep = 0;
     private List<int> correctSequence = new List<int>();
@@ -40,13 +46,20 @@ public class GeneralSwitches : MonoBehaviour
             positions[1] = new Vector2(-75, -40);
             positions[2] = new Vector2(75, -40);
             positions[3] = new Vector2(200, -40);
+
+            greenCheckPositions = new Vector2[inputsRequired];
+
+            greenCheckPositions[0] = new Vector2(-200, 40);
+            greenCheckPositions[1] = new Vector2(-75, 40);
+            greenCheckPositions[2] = new Vector2(75, 40);
+            greenCheckPositions[3] = new Vector2(200, 40);
         }
         inputs = new int[inputsRequired];
         correctSequence = new List<int>(Enumerable.Repeat(0, inputsRequired));
 
         for (int i = 0; i < inputsRequired; i++)
         {
-            int randomInt = Random.Range(0, 4);
+            int randomInt = UnityEngine.Random.Range(0, 4);
             inputs[i] = randomInt;
         }
         //Place Images onto empty UI
@@ -55,18 +68,32 @@ public class GeneralSwitches : MonoBehaviour
             int index = inputs[i];
             InstantiateImage(positions[i], inputImageArray[index]);
         }
+        Transform child = transform.Find("TaskTimerText");
+        timerText = child.GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        float roundedTimer = Mathf.Round(timer * 10f) / 10f;
+        timerText.text = $"{roundedTimer}";
         if (currentStep < inputsRequired)
         {
+            if (currentStep >= 1)
+            {
+                timer -= Time.deltaTime;
+                if (timer <= 0)
+                {
+                    timer = 4f;
+                    ResetInput();
+                }
+            }
             if (waiting)
             {
                 if (Input.GetKeyDown(KeyCode.UpArrow) && inputs[currentStep] == 0)
                 {
                     correctSequence[currentStep] = 2;
+                    InstantiateImage(greenCheckPositions[currentStep], greenCheck);
                     currentStep++;
                     waiting = false;
                     Debug.Log("Up Inputted");
@@ -74,6 +101,7 @@ public class GeneralSwitches : MonoBehaviour
                 else if (Input.GetKeyDown(KeyCode.RightArrow) && inputs[currentStep] == 1)
                 {
                     correctSequence[currentStep] = 2;
+                    InstantiateImage(greenCheckPositions[currentStep], greenCheck);
                     currentStep++;
                     waiting = false;
                     Debug.Log("Right Inputted");
@@ -81,6 +109,7 @@ public class GeneralSwitches : MonoBehaviour
                 else if (Input.GetKeyDown(KeyCode.DownArrow) && inputs[currentStep] == 2)
                 {
                     correctSequence[currentStep] = 2;
+                    InstantiateImage(greenCheckPositions[currentStep], greenCheck);
                     currentStep++;
                     waiting = false;
                     Debug.Log("Down Inputted");
@@ -88,11 +117,12 @@ public class GeneralSwitches : MonoBehaviour
                 else if (Input.GetKeyDown(KeyCode.LeftArrow) && inputs[currentStep] == 3)
                 {
                     correctSequence[currentStep] = 2;
+                    InstantiateImage(greenCheckPositions[currentStep], greenCheck);
                     currentStep++;
                     waiting = false;
                     Debug.Log("Left Inputted");
                 }
-                else if(!waiting)
+                else if(Input.anyKeyDown && !Input.GetMouseButtonDown(0))
                 {
                     correctSequence[currentStep] = 1;
                 }
@@ -105,12 +135,7 @@ public class GeneralSwitches : MonoBehaviour
                 }
                 else if(hasOne) //If incorrect input detected
                 {
-                    Debug.Log("Try again from the start!");
-                    for(int i = 0; i < correctSequence.Count; i++)
-                    {
-                        correctSequence[i] = 0;
-                    }
-                    currentStep = 0;
+                    ResetInput();
                 }
             }
 
@@ -134,5 +159,22 @@ public class GeneralSwitches : MonoBehaviour
 
         RectTransform newImageRectTransform = newImage.GetComponent<RectTransform>();
         newImageRectTransform.anchoredPosition = position;
+    }
+    void ResetInput()
+    {
+        Debug.Log("Try again from the start!");
+        for (int i = 0; i < correctSequence.Count; i++)
+        {
+            correctSequence[i] = 0;
+        }
+        currentStep = 0;
+        timer = 4f;
+        Transform[] children = this.GetComponentsInChildren<Transform>().Where(child => child.name == "greenTick(Clone)").ToArray();
+
+        foreach (Transform child in children)
+        {
+            child.gameObject.SetActive(false);
+        }
+
     }
 }

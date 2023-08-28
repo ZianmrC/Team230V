@@ -29,6 +29,10 @@ public class ClickAnamoly : MonoBehaviour
             {
                 if (hit.collider.gameObject == gameObject)
                 {
+                    if(task == null)
+                    {
+                        throw new System.Exception();
+                    }
                     GameObject instantiatedObject = Instantiate(task);
                     instantiatedObject.transform.SetParent(canvas.transform, false);
                     RectTransform instantiatedRT= instantiatedObject.GetComponent<RectTransform>();
