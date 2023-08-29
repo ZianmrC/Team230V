@@ -59,7 +59,9 @@
     <Compile Include="Assets\Scripts\ClickAnamoly.cs" />
     <Compile Include="Assets\Scripts\AnomalyScripts\GeneralSwitches.cs" />
     <Compile Include="Assets\Scripts\AnamolySpawner.cs" />
-    <Compile Include="Assets\Scripts\EventManager.cs" />
+    <Compile Include="Assets\Scripts\UI Scripts\HideTask.cs" />
+    <Compile Include="Assets\Scripts\UI Scripts\SwitchScene.cs" />
+    <Compile Include="Assets\Scripts\UI Scripts\EventManager.cs" />
     <Compile Include="Assets\Scripts\TaskInfo.cs" />
   </ItemGroup>
   <ItemGroup>

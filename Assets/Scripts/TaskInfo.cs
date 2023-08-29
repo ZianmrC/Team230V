@@ -6,6 +6,8 @@ public class TaskInfo : MonoBehaviour
 {
     public float taskTimer;
     private ClickAnamoly CA;
+    private GameObject EventManager;
+    private EventManager eventManager;
     private float currentTimer;
 
     public int taskID; //Used to reference itself in AnamolySpawner.occupiedAnamolyLocations
@@ -13,6 +15,8 @@ public class TaskInfo : MonoBehaviour
     void Start()
     {
         CA = GetComponent<ClickAnamoly>();
+        EventManager = GameObject.Find("EventSystem");
+        eventManager = EventManager.GetComponent<EventManager>();
     }
 
     // Update is called once per frame
@@ -31,8 +35,42 @@ public class TaskInfo : MonoBehaviour
         AnamolySpawner.availableSpots.Add(taskID);
         //Debug.Log($"Available spots count after update: {AnamolySpawner.availableSpots.Count}");
     }
+    public void UpdateBoolArrayGivenID(int ID)
+    {
+        foreach(var location in AnamolySpawner.occupiedAnomalyLocations)
+        {
+            Debug.Log(location);
+        }
+        AnamolySpawner.occupiedAnomalyLocations[ID] = false;
+        AnamolySpawner.availableSpots.Add(ID);
+
+        //Debug.Log($"Positioned freed: {taskID}");
+        //Debug.Log($"Available spots count after update: {AnamolySpawner.availableSpots.Count}");
+    }
     public void UpdateID(int id)
     {
         taskID = id;
     }
+    /*
+    public void ChecksTasksForID(int ID)
+    {
+        GameObject[] taskObjects = GameObject.FindGameObjectsWithTag("Task");
+        foreach (var taskObject in taskObjects)
+        {
+            Debug.Log($"Found task object, Name: {taskObject.name}");
+        }
+        foreach (var taskObject in taskObjects)
+        {
+            TaskInfo taskInfo = taskObject.GetComponent<TaskInfo>();
+
+            if (taskInfo != null && taskInfo.taskID == ID)
+            {
+                // Perform your action here, for example:
+                // taskInfo.UpdateBoolArray();
+                Destroy(taskObject);
+            }
+        }
+    }
+    */
+
 }
