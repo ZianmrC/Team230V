@@ -9,6 +9,8 @@ using System;
 public class GeneralSwitches : MonoBehaviour
 {
     private GameObject manager;
+    private TaskInfo taskInfo;
+    [HideInInspector] public int taskID;
     EventManager eventManager;
     private int inputsRequired;
     private TextMeshProUGUI timerText;
@@ -28,6 +30,7 @@ public class GeneralSwitches : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log(taskID);
         manager = GameObject.Find("EventSystem");
         eventManager = manager.GetComponent<EventManager>();
 
@@ -96,7 +99,6 @@ public class GeneralSwitches : MonoBehaviour
                     InstantiateImage(greenCheckPositions[currentStep], greenCheck);
                     currentStep++;
                     waiting = false;
-                    Debug.Log("Up Inputted");
                 }
                 else if (Input.GetKeyDown(KeyCode.RightArrow) && inputs[currentStep] == 1)
                 {
@@ -104,7 +106,6 @@ public class GeneralSwitches : MonoBehaviour
                     InstantiateImage(greenCheckPositions[currentStep], greenCheck);
                     currentStep++;
                     waiting = false;
-                    Debug.Log("Right Inputted");
                 }
                 else if (Input.GetKeyDown(KeyCode.DownArrow) && inputs[currentStep] == 2)
                 {
@@ -112,7 +113,6 @@ public class GeneralSwitches : MonoBehaviour
                     InstantiateImage(greenCheckPositions[currentStep], greenCheck);
                     currentStep++;
                     waiting = false;
-                    Debug.Log("Down Inputted");
                 }
                 else if (Input.GetKeyDown(KeyCode.LeftArrow) && inputs[currentStep] == 3)
                 {
@@ -120,7 +120,6 @@ public class GeneralSwitches : MonoBehaviour
                     InstantiateImage(greenCheckPositions[currentStep], greenCheck);
                     currentStep++;
                     waiting = false;
-                    Debug.Log("Left Inputted");
                 }
                 else if(Input.anyKeyDown && !Input.GetMouseButtonDown(0))
                 {
@@ -131,6 +130,9 @@ public class GeneralSwitches : MonoBehaviour
                 if(allTrue)
                 {
                     Debug.Log("Task Completed!");
+                    Debug.Log(taskID);
+                    eventManager.ChecksTasksForID(taskID);
+                    eventManager.UpdateBoolArrayGivenID(taskID);
                     Destroy(gameObject);
                 }
                 else if(hasOne) //If incorrect input detected

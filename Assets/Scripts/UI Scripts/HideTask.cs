@@ -24,7 +24,6 @@ public class HideTask : MonoBehaviour
     public void TaskToHide()
     {
         Destroy(task);
-        Debug.Log("test");
     }
     public void MakeUI_Invisible()
     {

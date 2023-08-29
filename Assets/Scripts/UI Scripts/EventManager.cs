@@ -54,5 +54,26 @@ public class EventManager : MonoBehaviour
         }
         */
     }
+    public void ChecksTasksForID(int ID)
+    {
+        GameObject[] taskObjects = GameObject.FindGameObjectsWithTag("Task");
+        foreach (var taskObject in taskObjects)
+        {
+            TaskInfo taskInfo = taskObject.GetComponent<TaskInfo>();
+            int number = taskObject.GetComponent<TaskInfo>().taskID;
+            if (taskInfo != null && taskInfo.taskID == ID)
+            {
+                // Perform your action here, for example:
+                // taskInfo.UpdateBoolArray();
+                Destroy(taskObject);
+            }
+        }
+    }
+    public void UpdateBoolArrayGivenID(int ID)
+    {
+        AnamolySpawner.occupiedAnomalyLocations[ID] = false;
+        AnamolySpawner.availableSpots.Add(ID);
+
+    }
 
 }
