@@ -26,7 +26,6 @@ public class Button : MonoBehaviour
                     if (hit.collider.gameObject == gameObject)
                     {
                         gameCamera.Move(targetRoom);
-                        Debug.Log(targetRoom);
                     }
                 }
             }
@@ -34,7 +33,6 @@ public class Button : MonoBehaviour
 
     public void ChangeRoom()
     {
-        Debug.Log("Changing room");
         gameCamera.Move(targetRoom);
     }
 }

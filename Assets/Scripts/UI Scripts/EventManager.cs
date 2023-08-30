@@ -13,10 +13,12 @@ public class EventManager : MonoBehaviour
     private float updateTimer;
     private float percentage;
     public TextMeshProUGUI taskCounterText;
-    public int numberOfTasksUntilOverload = 2; //The minimum number of tasks present in order to start incrementing the Electricity Overlaod
+    public int numberOfTasksUntilOverload = 2; //The minimum number of tasks present in order to start incrementing the Electricity Overload
+    public static int Lives = 3;
     // Start is called before the first frame update
     void Start()
     {
+
     }
 
     // Update is called once per frame
