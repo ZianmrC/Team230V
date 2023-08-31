@@ -13,6 +13,7 @@ public class AnamolySpawner : MonoBehaviour
     public GameObject KTask; //Kitchen Task
     public GameObject LVTask; //Living Room Task
     public GameObject BRTask; //Bathroom Task
+    public GameObject ParentTask; //Parent Task
 
     public float maxSpawnTime; //Gurantees to spawn an anamoly if one hasn't spawned after a particular amount of time
     public float percentageIncrementInterval;
@@ -96,6 +97,10 @@ public class AnamolySpawner : MonoBehaviour
         if (occupiedAnomalyLocations[randomLocation] == false)
         {
             occupiedAnomalyLocations[randomLocation] = true; //Signify that task is already at spawn location
+            if (randomLocation < 2)
+            {
+                InstantiateAnomaly(ParentTask, anomalyLocations[randomLocation], randomLocation);
+            }
             if (randomLocation < 3)
             {
                 InstantiateAnomaly(KTask, anomalyLocations[randomLocation], randomLocation);
