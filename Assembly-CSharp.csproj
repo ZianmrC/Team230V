@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\TaskInfo.cs" />
     <Compile Include="Assets\Scripts\AnomalyScripts\GeneralPlug.cs" />
     <Compile Include="Assets\Scripts\DragAndDrop.cs" />
+    <Compile Include="Assets\Scripts\MeshInvisible.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
