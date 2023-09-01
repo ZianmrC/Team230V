@@ -56,18 +56,24 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\MeshInvisible.cs" />
     <Compile Include="Assets\Scripts\Button.cs" />
     <Compile Include="Assets\Scripts\GameCamera.cs" />
+    <Compile Include="Assets\Scripts\AnomalyScripts\ParentTask.cs" />
+    <Compile Include="Assets\Scripts\AnomalyScripts\PlugInfo.cs" />
     <Compile Include="Assets\Scripts\ClickAnamoly.cs" />
     <Compile Include="Assets\Scripts\AnomalyScripts\GeneralSwitches.cs" />
+    <Compile Include="Assets\Scripts\UI Scripts\DragAndDropUI.cs" />
     <Compile Include="Assets\Scripts\AnamolySpawner.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\HideTask.cs" />
+    <Compile Include="Assets\Scripts\ParentMediator.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\SwitchScene.cs" />
+    <Compile Include="Assets\Scripts\PlugTask_ExtensionCordSlot.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\EventManager.cs" />
     <Compile Include="Assets\Scripts\TaskInfo.cs" />
     <Compile Include="Assets\Scripts\AnomalyScripts\GeneralPlug.cs" />
-    <Compile Include="Assets\Scripts\DragAndDrop.cs" />
-    <Compile Include="Assets\Scripts\MeshInvisible.cs" />
+    <Compile Include="Assets\Scripts\Parent.cs" />
+    <Compile Include="Assets\Scripts\AnomalyScripts\ExtensionCord.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
