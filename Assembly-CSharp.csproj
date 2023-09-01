@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\MeshInvisible.cs" />
     <Compile Include="Assets\Scripts\Button.cs" />
+    <Compile Include="Assets\Scripts\Explaination_Manager.cs" />
     <Compile Include="Assets\Scripts\GameCamera.cs" />
     <Compile Include="Assets\Scripts\AnomalyScripts\ParentTask.cs" />
     <Compile Include="Assets\Scripts\AnomalyScripts\PlugInfo.cs" />
@@ -73,7 +74,6 @@
     <Compile Include="Assets\Scripts\TaskInfo.cs" />
     <Compile Include="Assets\Scripts\AnomalyScripts\GeneralPlug.cs" />
     <Compile Include="Assets\Scripts\Parent.cs" />
-    <Compile Include="Assets\Scripts\AnomalyScripts\ExtensionCord.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

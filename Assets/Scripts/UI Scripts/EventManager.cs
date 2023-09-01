@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class EventManager : MonoBehaviour
 {
     public TextMeshProUGUI text;
+    private string GameOverScene = "GameOver Scene";
 
     public static int taskCounter = 0;
-    public static float TotalGameTime;
+    public static float totalGameTime;
     private float updateTimer;
     private float percentage;
     public TextMeshProUGUI taskCounterText;
@@ -26,13 +28,13 @@ public class EventManager : MonoBehaviour
     {
         CountTasks();
         taskCounterText.text = $"{taskCounter}";
-        updateTimer += Time.deltaTime; TotalGameTime += Time.deltaTime;
+        updateTimer += Time.deltaTime; totalGameTime += Time.deltaTime;
         if(updateTimer > 1.5f)
         {
             //CountTasks();
             if(taskCounter == 0 && percentage > 0f) //If there are no tasks currently, decrease the overload bar
             {
-                percentage--;
+                percentage -= 2;
             }
             else if (taskCounter > 0 && taskCounter >= numberOfTasksUntilOverload)
             {
@@ -41,6 +43,11 @@ public class EventManager : MonoBehaviour
             text.text = $"Electricity Overload: {percentage}%";
             updateTimer = 0f;
             //Debug.Log($"Task Counter: {taskCounter}");
+        }
+        totalGameTime += Time.deltaTime;
+        if(percentage >= 100f)
+        {
+            SceneManager.LoadScene(GameOverScene);
         }
     }
     public void CountTasks()

@@ -32,24 +32,31 @@ public class ClickAnamoly : MonoBehaviour
             {
                 if (hit.collider.gameObject == gameObject)
                 {
-                    if(task == null)
+                    if (task != null)
                     {
-                        throw new System.Exception();
+                        if (task.GetComponent<GeneralSwitches>() != null)
+                        {
+                            taskNumber = GetComponent<TaskInfo>().taskID;
+                            task.GetComponent<GeneralSwitches>().taskID = taskNumber; // Pass value of Task ID to the Task's Script
+                        }
+                        else if (task.GetComponent<GeneralPlug>() != null)
+                        {
+                            taskNumber = GetComponent<TaskInfo>().taskID;
+                            task.GetComponent<GeneralPlug>().taskID = taskNumber; // Pass value of Task ID to the Task's Script
+                        }
+
+                        GameObject instantiatedObject = Instantiate(task);
+                        instantiatedObject.transform.SetParent(canvas.transform, false);
+                        RectTransform instantiatedRT = instantiatedObject.GetComponent<RectTransform>();
+                        instantiatedRT.anchoredPosition = Vector2.zero;
                     }
-                    taskNumber = GetComponent<TaskInfo>().taskID;
-                    task.GetComponent<GeneralSwitches>().taskID = taskNumber; //Pass value of Task ID to the Task's Script
-                    Debug.Log(taskNumber);
-
-                    GameObject instantiatedObject = Instantiate(task);
-                    instantiatedObject.transform.SetParent(canvas.transform, false);
-                    RectTransform instantiatedRT= instantiatedObject.GetComponent<RectTransform>();
-                    instantiatedRT.anchoredPosition = Vector2.zero;
-
-                    //Destroy(gameObject); //Destroy object for now, in further development, this will spawn task
-                    //gameObject.SetActive(false)
-                    //taskInfo.UpdateBoolArray();
+                    // Continue execution without instantiating if task is null
                 }
             }
         }
     }
+
 }
+//Destroy(gameObject); //Destroy object for now, in further development, this will spawn task
+//gameObject.SetActive(false)
+//taskInfo.UpdateBoolArray();
