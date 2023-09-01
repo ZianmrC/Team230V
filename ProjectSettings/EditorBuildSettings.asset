@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Zian's Scene.unity
     guid: 15b56f5cedf86b04eb55e9b448b9ea75
+  - enabled: 1
+    path: Assets/Scenes/Start_Tutorial.unity
+    guid: b5627d0f4a470ef4bbf73b6fa0754f72
+  - enabled: 1
+    path: Assets/Scenes/Philipp_Scene.unity
+    guid: 3e5a742f8637f454dac6d4c392a27dd9
   m_configObjects: {}
