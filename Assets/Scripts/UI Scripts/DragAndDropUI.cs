@@ -31,7 +31,7 @@ public class DragAndDropUI : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
     public void OnEndDrag(PointerEventData eventData)
     {
         //Debug.Log("OnEndDrag");
-        lastPosition = rectTransform.position;
+        //lastPosition = rectTransform.position;
     }
     public void OnPointerDown(PointerEventData eventData)
     {

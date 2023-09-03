@@ -4,15 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-[ExecuteInEditMode]
 public class GeneralPlug : MonoBehaviour
 {
+    public static int numberOfCorrectPlaces = 0;
     EventManager eventManager;
     public GameObject[] imageArray;
     public int taskID;
     public TextMeshProUGUI text;
 
-    public int numberOfColors; // The number of different colored plugs to match, if it's 3, 3 extension cords will spawn instead of 2
     private string[] colors = { "Blue", "Yellow", "Red", "Green" };
     public GameObject neutralPlug;
     public GameObject topExtensionCord;
@@ -30,7 +29,6 @@ public class GeneralPlug : MonoBehaviour
     public GameObject[] colorIdentifier;
     public GameObject plugSlots;
 
-    public static int numberOfCorrectPlaces = 0;
     public static bool awakeCalled = false;
 
     protected float hD = 583f;
@@ -51,7 +49,6 @@ public class GeneralPlug : MonoBehaviour
         // Pick 2 Random Colors
         while (extensionCord2Color == null || extensionCord1Color == null)
         {
-            Debug.Log("test2");
             int randomIndex = Random.Range(0, colors.Length);
             int randomIndex2 = Random.Range(0, colors.Length);
             extensionCord1Color = colors[randomIndex];
@@ -63,12 +60,12 @@ public class GeneralPlug : MonoBehaviour
         }
         Debug.Log("test3");
         topExtensionCordPositions = new Vector2[6];
-        topExtensionCordPositions[0] = new Vector2(620, 750);
-        topExtensionCordPositions[1] = new Vector2(754, 750);
-        topExtensionCordPositions[2] = new Vector2(888, 750);
-        topExtensionCordPositions[3] = new Vector2(1038, 750);
-        topExtensionCordPositions[4] = new Vector2(1186, 750);
-        topExtensionCordPositions[5] = new Vector2(1306, 750);
+        topExtensionCordPositions[0] = new Vector2(720, 710);
+        topExtensionCordPositions[1] = new Vector2(814, 710);
+        topExtensionCordPositions[2] = new Vector2(916, 710);
+        topExtensionCordPositions[3] = new Vector2(1010, 710);
+        topExtensionCordPositions[4] = new Vector2(1126, 710);
+        topExtensionCordPositions[5] = new Vector2(1220, 710);
 
         if (extensionCord1Color == "Blue") { color1 = imageArray[0]; }
         else if (extensionCord1Color == "Yellow") { color1 = imageArray[1]; }
@@ -94,40 +91,40 @@ public class GeneralPlug : MonoBehaviour
         //Plug positions
         //ExtensionCord1
         extensionCord1Slots = new Vector2[6];
-        extensionCord1Slots[0] = new Vector2(620, 480);
-        extensionCord1Slots[1] = new Vector2(754, 480);
-        extensionCord1Slots[2] = new Vector2(888, 480);
-        extensionCord1Slots[3] = new Vector2(1038, 480);
-        extensionCord1Slots[4] = new Vector2(1186, 480);
-        extensionCord1Slots[5] = new Vector2(1306, 480);
+        extensionCord1Slots[0] = new Vector2(720, 545);
+        extensionCord1Slots[1] = new Vector2(814, 545);
+        extensionCord1Slots[2] = new Vector2(916, 545);
+        extensionCord1Slots[3] = new Vector2(1010, 545);
+        extensionCord1Slots[4] = new Vector2(1126, 545);
+        extensionCord1Slots[5] = new Vector2(1220, 545);
         //ExtensionCord2
         extensionCord2Slots = new Vector2[6];
-        extensionCord2Slots[0] = new Vector2(620, 250);
-        extensionCord2Slots[1] = new Vector2(754, 250);
-        extensionCord2Slots[2] = new Vector2(888, 250);
-        extensionCord2Slots[3] = new Vector2(1038, 250);
-        extensionCord2Slots[4] = new Vector2(1186, 250);
-        extensionCord2Slots[5] = new Vector2(1306, 250);
+        extensionCord2Slots[0] = new Vector2(720, 370);
+        extensionCord2Slots[1] = new Vector2(814, 370);
+        extensionCord2Slots[2] = new Vector2(916, 370);
+        extensionCord2Slots[3] = new Vector2(1010, 370);
+        extensionCord2Slots[4] = new Vector2(1126, 370);
+        extensionCord2Slots[5] = new Vector2(1220, 370);
 
         for (int i = 0; i < extensionCord1Slots.Length; i++) //ExtensionCord1
         {
             GameObject newSlot = Instantiate(plugSlots, extensionCord1Slots[i], Quaternion.identity, transform);
-            PlugTask_ExtensionCordSlot slotScript = newSlot.GetComponent<PlugTask_ExtensionCordSlot>();
+            PlugTaskSlot slotScript = newSlot.GetComponent<PlugTaskSlot>();
             slotScript.color = extensionCord1Color;
             instantiatedSlots.Add(newSlot);
         }
         for (int i = 0; i < extensionCord2Slots.Length; i++) //ExtensionCord2
         {
             GameObject newSlot = Instantiate(plugSlots, extensionCord2Slots[i], Quaternion.identity, transform);
-            PlugTask_ExtensionCordSlot slotScript = newSlot.GetComponent<PlugTask_ExtensionCordSlot>();
+            PlugTaskSlot slotScript = newSlot.GetComponent<PlugTaskSlot>();
             slotScript.color = extensionCord2Color;
             instantiatedSlots.Add(newSlot);
         }
 
         Transform parentTransform = transform;
         // Create the Color Identifier
-        Vector2 position1 = new Vector2(550, 472); //ExtensionCord1 position
-        Vector2 position2 = new Vector2(550, 237); //ExtensionCord2 position
+        Vector2 position1 = new Vector2(680, 547); //ExtensionCord1 position
+        Vector2 position2 = new Vector2(680, 360); //ExtensionCord2 position
         Quaternion rotation = Quaternion.identity; // No rotation
 
         if (extensionCord1Color == "Blue")

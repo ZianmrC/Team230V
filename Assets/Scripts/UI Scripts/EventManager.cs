@@ -2,16 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class EventManager : MonoBehaviour
 {
     public TextMeshProUGUI text;
-    private string GameOverScene = "GameOver Scene";
-
+    public string GameOverScene = "GameOver Scene";
     public static int taskCounter = 0;
-    public static float totalGameTime;
+    public static float TotalGameTime;
     private float updateTimer;
     private float percentage;
     public TextMeshProUGUI taskCounterText;
@@ -28,7 +27,7 @@ public class EventManager : MonoBehaviour
     {
         CountTasks();
         taskCounterText.text = $"{taskCounter}";
-        updateTimer += Time.deltaTime; totalGameTime += Time.deltaTime;
+        updateTimer += Time.deltaTime; TotalGameTime += Time.deltaTime;
         if(updateTimer > 1.5f)
         {
             //CountTasks();
@@ -44,8 +43,7 @@ public class EventManager : MonoBehaviour
             updateTimer = 0f;
             //Debug.Log($"Task Counter: {taskCounter}");
         }
-        totalGameTime += Time.deltaTime;
-        if(percentage >= 100f)
+        if(percentage >= 100)
         {
             SceneManager.LoadScene(GameOverScene);
         }

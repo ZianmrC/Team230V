@@ -69,7 +69,7 @@
     <Compile Include="Assets\Scripts\UI Scripts\HideTask.cs" />
     <Compile Include="Assets\Scripts\ParentMediator.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\SwitchScene.cs" />
-    <Compile Include="Assets\Scripts\PlugTask_ExtensionCordSlot.cs" />
+    <Compile Include="Assets\Scripts\PlugTaskSlot.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\EventManager.cs" />
     <Compile Include="Assets\Scripts\TaskInfo.cs" />
     <Compile Include="Assets\Scripts\AnomalyScripts\GeneralPlug.cs" />

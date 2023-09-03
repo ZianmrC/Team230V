@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -384,7 +384,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &104661920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -407,8 +407,8 @@ MonoBehaviour:
   - {fileID: 91710143}
   - {fileID: 1354088702}
   - {fileID: 1087633482}
-  KTask: {fileID: 2968953709381042183, guid: 9bda59dee5d66844b83a79a0def6a6f9, type: 3}
-  LVTask: {fileID: 6958922126443529715, guid: 82513cc9ce7bb09428c6a0f84b6af798, type: 3}
+  SwitchTask: {fileID: 0}
+  PlugTask: {fileID: 0}
   BRTask: {fileID: 7663906632374380942, guid: a25e78639185c134584cffc877465ea9, type: 3}
   ParentTask: {fileID: 2968953709381042183, guid: e4d405c71795f7b459db48566e167e2a, type: 3}
   maxSpawnTime: 20
@@ -2385,6 +2385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 12124238}
+  GameOverScene: GameOver Scene
   taskCounterText: {fileID: 737670865}
   numberOfTasksUntilOverload: 2
 --- !u!114 &1074259505

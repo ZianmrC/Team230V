@@ -1,15 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class PlugTask_ExtensionCordSlot : MonoBehaviour, IDropHandler
+public class PlugTaskSlot : MonoBehaviour, IDropHandler
 {
     public string color = "Blue";
     public void OnDrop(PointerEventData eventData)
     {
-        if(eventData.pointerDrag != null)
+        if (eventData.pointerDrag != null)
         {
             PlugInfo plugInfo = eventData.pointerDrag.GetComponent<PlugInfo>();
             DragAndDropUI dragdrop = eventData.pointerDrag.GetComponent<DragAndDropUI>();

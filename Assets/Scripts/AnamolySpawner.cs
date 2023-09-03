@@ -10,10 +10,9 @@ public class AnamolySpawner : MonoBehaviour
     public Transform[] anomalyLocations = new Transform[0];
     public static bool[] occupiedAnomalyLocations;
     public static List<int> availableSpots = new List<int>();
-    public GameObject SwitchTask; //Switches Task
-    public GameObject LVTask; //Living Room Task
+    public GameObject SwitchTask;
+    public GameObject PlugTask;
     public GameObject BRTask; //Bathroom Task
-    public GameObject PlugTask; //Plug task
     public GameObject ParentTask; //Parent Task
 
     public float maxSpawnTime; //Gurantees to spawn an anamoly if one hasn't spawned after a particular amount of time
@@ -24,9 +23,9 @@ public class AnamolySpawner : MonoBehaviour
 
     private float timeSinceLastSpawn;
     private GameObject e;
+    private bool difficultyIncrease1 = false;
+    private bool difficultyIncrease2 = false;
     EventManager eventManager;
-    private bool difficultyIncreased1 = false;
-    private bool difficultyIncreased2 = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,28 +38,13 @@ public class AnamolySpawner : MonoBehaviour
         }
         e = GameObject.Find("EventSystem");
         eventManager = e.GetComponent<EventManager>();
-        difficultyIncreased1 = false;
-        difficultyIncreased2 = false;
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        EventManager.totalGameTime += Time.deltaTime;
-        {
-            if(EventManager.totalGameTime > 40 && !difficultyIncreased1)
-            {
-                spawnChance += 10f;
-                maxSpawnTime -= 5f;
-                difficultyIncreased1 = true;
-            }
-            if (EventManager.totalGameTime > 80 && !difficultyIncreased2)
-            {
-                spawnChance += 5f;
-                percentageIncrement += 1;
-                difficultyIncreased2 = true;
-            }
-        }
         //Spawning Anamoly
         timeSinceLastSpawn += Time.deltaTime;
         if (timeSinceLastSpawn > percentageIncrementInterval) //Chance to Spawn anamoly after number of seconds
@@ -83,15 +67,25 @@ public class AnamolySpawner : MonoBehaviour
             timeSinceLastSpawn = 0f;
         }
 
-
         //Increase Spawn Chances if Anamoly not spawned
+        if(EventManager.TotalGameTime < 40 && !difficultyIncrease1)
+        {
+            spawnChance += 5;
+            maxSpawnTime -= 8;
+            difficultyIncrease1 = true;
+        }
+        else if (EventManager.TotalGameTime < 80 && !difficultyIncrease2)
+        {
+            percentageIncrement += 2;
+            difficultyIncrease2 = true;
+        }
 
     }
     public void SpawnAnamoly()
     {
         if (availableSpots.Count == 0)
         {
-            //Debug.Log("All Tasks are present");
+            Debug.Log("All Tasks are present");
             return;
         }
 
@@ -115,20 +109,12 @@ public class AnamolySpawner : MonoBehaviour
         if (occupiedAnomalyLocations[randomLocation] == false)
         {
             occupiedAnomalyLocations[randomLocation] = true; //Signify that task is already at spawn location
-            if (randomLocation < 2)
+            if (randomLocation < 3)
             {
-                //InstantiateAnomaly(ParentTask, anomalyLocations[randomLocation], randomLocation); //Causes Errors
+                //InstantiateAnomaly(ParentTask, anomalyLocations[randomLocation], randomLocation); Causes Errors
                 InstantiateAnomaly(SwitchTask, anomalyLocations[randomLocation], randomLocation);
             }
-            else if (randomLocation < 3)
-            {
-                InstantiateAnomaly(SwitchTask, anomalyLocations[randomLocation], randomLocation);
-            }
-            else if (randomLocation == 6)
-            {
-                InstantiateAnomaly(PlugTask, anomalyLocations[randomLocation], randomLocation);
-            }
-            else if (randomLocation < 7)
+            else if (randomLocation < 6)
             {
                 InstantiateAnomaly(SwitchTask, anomalyLocations[randomLocation], randomLocation);
             }
