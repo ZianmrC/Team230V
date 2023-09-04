@@ -60,12 +60,12 @@ public class GeneralPlug : MonoBehaviour
         }
         Debug.Log("test3");
         topExtensionCordPositions = new Vector2[6];
-        topExtensionCordPositions[0] = new Vector2(720, 710);
-        topExtensionCordPositions[1] = new Vector2(814, 710);
-        topExtensionCordPositions[2] = new Vector2(916, 710);
-        topExtensionCordPositions[3] = new Vector2(1010, 710);
-        topExtensionCordPositions[4] = new Vector2(1126, 710);
-        topExtensionCordPositions[5] = new Vector2(1220, 710);
+        topExtensionCordPositions[0] = new Vector2(730, 698);
+        topExtensionCordPositions[1] = new Vector2(818, 698);
+        topExtensionCordPositions[2] = new Vector2(910, 698);
+        topExtensionCordPositions[3] = new Vector2(1013, 698);
+        topExtensionCordPositions[4] = new Vector2(1110, 698);
+        topExtensionCordPositions[5] = new Vector2(1204, 698);
 
         if (extensionCord1Color == "Blue") { color1 = imageArray[0]; }
         else if (extensionCord1Color == "Yellow") { color1 = imageArray[1]; }
@@ -91,20 +91,20 @@ public class GeneralPlug : MonoBehaviour
         //Plug positions
         //ExtensionCord1
         extensionCord1Slots = new Vector2[6];
-        extensionCord1Slots[0] = new Vector2(720, 545);
-        extensionCord1Slots[1] = new Vector2(814, 545);
-        extensionCord1Slots[2] = new Vector2(916, 545);
-        extensionCord1Slots[3] = new Vector2(1010, 545);
-        extensionCord1Slots[4] = new Vector2(1126, 545);
-        extensionCord1Slots[5] = new Vector2(1220, 545);
+        extensionCord1Slots[0] = new Vector2(730, 545);
+        extensionCord1Slots[1] = new Vector2(818, 545);
+        extensionCord1Slots[2] = new Vector2(910, 545);
+        extensionCord1Slots[3] = new Vector2(1013, 545);
+        extensionCord1Slots[4] = new Vector2(1110, 545);
+        extensionCord1Slots[5] = new Vector2(1204, 545);
         //ExtensionCord2
         extensionCord2Slots = new Vector2[6];
-        extensionCord2Slots[0] = new Vector2(720, 370);
-        extensionCord2Slots[1] = new Vector2(814, 370);
-        extensionCord2Slots[2] = new Vector2(916, 370);
-        extensionCord2Slots[3] = new Vector2(1010, 370);
-        extensionCord2Slots[4] = new Vector2(1126, 370);
-        extensionCord2Slots[5] = new Vector2(1220, 370);
+        extensionCord2Slots[0] = new Vector2(730, 370);
+        extensionCord2Slots[1] = new Vector2(818, 370);
+        extensionCord2Slots[2] = new Vector2(910, 370);
+        extensionCord2Slots[3] = new Vector2(1013, 370);
+        extensionCord2Slots[4] = new Vector2(1110, 370);
+        extensionCord2Slots[5] = new Vector2(1204, 370);
 
         for (int i = 0; i < extensionCord1Slots.Length; i++) //ExtensionCord1
         {
@@ -189,7 +189,8 @@ public class GeneralPlug : MonoBehaviour
             else
             {
                 neutralColorTracker--;
-                Instantiate(neutralPlug, position, Quaternion.identity, topExtensionCord.transform);
+                //Instantiate(neutralPlug, position, Quaternion.identity, topExtensionCord.transform);
+                Instantiate(neutralPlug, position, Quaternion.identity, this.transform);
             }
         }
         else if (randomIndex == 1) // 1 spawns color1
@@ -201,7 +202,8 @@ public class GeneralPlug : MonoBehaviour
             else
             {
                 color1Tracker--;
-                Instantiate(color1, position, Quaternion.identity, topExtensionCord.transform);
+                //Instantiate(color1, position, Quaternion.identity, topExtensionCord.transform);
+                Instantiate(color1, position, Quaternion.identity, this.transform);
             }
         }
         else if (randomIndex == 2) // 2 spawns color2
@@ -213,7 +215,8 @@ public class GeneralPlug : MonoBehaviour
             else
             {
                 color2Tracker--;
-                Instantiate(color2, position, Quaternion.identity, topExtensionCord.transform);
+                //Instantiate(color2, position, Quaternion.identity, topExtensionCord.transform);
+                Instantiate(color2, position, Quaternion.identity, this.transform);
             }
         }
     }

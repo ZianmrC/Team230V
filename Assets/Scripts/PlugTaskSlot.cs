@@ -8,6 +8,13 @@ using UnityEngine.EventSystems;
 public class PlugTaskSlot : MonoBehaviour, IDropHandler
 {
     public string color = "Blue";
+    private RectTransform rectTransform;
+    private Vector2 spawnPosition;
+    void Start()
+    {
+        rectTransform = GetComponent<RectTransform>();
+        spawnPosition = rectTransform.anchoredPosition;
+    }
     public void OnDrop(PointerEventData eventData)
     {
         if (eventData.pointerDrag != null)
@@ -17,16 +24,18 @@ public class PlugTaskSlot : MonoBehaviour, IDropHandler
             if (!string.Equals(plugInfo.color, color, StringComparison.OrdinalIgnoreCase))
             {
                 dragdrop.InvalidPosition(eventData);
+                Debug.Log(dragdrop.spawnPosition);
                 Debug.Log($"Plug info color: {plugInfo}, color: {color}");
                 Debug.Log("Incorrect!");
             }
             else
             {
                 //eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
-                eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = dragdrop.lastPosition;
+                eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = spawnPosition; //Set plug to plug socket's position
                 Debug.Log($"Correct! Anchored Position: {GetComponent<RectTransform>().anchoredPosition.x}, {GetComponent<RectTransform>().anchoredPosition.y}");
                 GeneralPlug.numberOfCorrectPlaces++;
-                Destroy(dragdrop); Destroy(this.gameObject);
+                Destroy(dragdrop); 
+                Destroy(this.gameObject);
             }
         }
     }

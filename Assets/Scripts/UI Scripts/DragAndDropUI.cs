@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -11,6 +12,7 @@ public class DragAndDropUI : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
     private RectTransform rectTransform;
     private Vector2 originalPosition;
     [HideInInspector] public Vector2 lastPosition;
+    [HideInInspector] public Vector2 spawnPosition;
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -18,19 +20,19 @@ public class DragAndDropUI : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
     void Start()
     {
         canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+        spawnPosition = rectTransform.anchoredPosition;
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
-        //Debug.Log("OnBeginDrag");
     }
     public void OnDrag(PointerEventData eventData)
     {
-        //Debug.Log("OnDrag");
+        Debug.Log("OnDrag");
         rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
     public void OnEndDrag(PointerEventData eventData)
     {
-        //Debug.Log("OnEndDrag");
+        //Debug.Log("test");
         //lastPosition = rectTransform.position;
     }
     public void OnPointerDown(PointerEventData eventData)
@@ -43,6 +45,6 @@ public class DragAndDropUI : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
     }
     public void InvalidPosition(PointerEventData eventData)
     {
-        this.rectTransform.anchoredPosition = originalPosition;
+        this.rectTransform.anchoredPosition = spawnPosition;
     }
 }
