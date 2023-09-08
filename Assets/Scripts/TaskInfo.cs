@@ -51,26 +51,5 @@ public class TaskInfo : MonoBehaviour
     {
         taskID = id;
     }
-    /*
-    public void ChecksTasksForID(int ID)
-    {
-        GameObject[] taskObjects = GameObject.FindGameObjectsWithTag("Task");
-        foreach (var taskObject in taskObjects)
-        {
-            Debug.Log($"Found task object, Name: {taskObject.name}");
-        }
-        foreach (var taskObject in taskObjects)
-        {
-            TaskInfo taskInfo = taskObject.GetComponent<TaskInfo>();
-
-            if (taskInfo != null && taskInfo.taskID == ID)
-            {
-                // Perform your action here, for example:
-                // taskInfo.UpdateBoolArray();
-                Destroy(taskObject);
-            }
-        }
-    }
-    */
 
 }

@@ -6,6 +6,7 @@ using TMPro;
 
 public class GeneralPlug : MonoBehaviour
 {
+    public int score = 5;
     public static int numberOfCorrectPlaces = 0;
     EventManager eventManager;
     public GameObject[] imageArray;
@@ -15,7 +16,12 @@ public class GeneralPlug : MonoBehaviour
     private string[] colors = { "Blue", "Yellow", "Red", "Green" };
     public GameObject neutralPlug;
     public GameObject topExtensionCord;
-    private Vector2[] topExtensionCordPositions; // An array to hold the Vector2 positions of the very top extension cord
+
+    //Spawn Locations of Plugs + PlugsSlots
+    public GameObject[] topExtensionCordSpawns;
+    public GameObject[] plugSlotSpawn1;
+    public GameObject[] plugSlotSpawn2;
+    public GameObject[] colorIdentifierSpawns;
 
     // Reference ExtensionCord Children Objects
     public GameObject ExtensionCord1;
@@ -23,16 +29,11 @@ public class GeneralPlug : MonoBehaviour
     [HideInInspector] private string extensionCord1Color = null;
     [HideInInspector] private string extensionCord2Color = null;
 
-    private Vector2[] extensionCord1Slots;
-    private Vector2[] extensionCord2Slots;
     private List<GameObject> instantiatedSlots = new List<GameObject>();
     public GameObject[] colorIdentifier;
     public GameObject plugSlots;
 
     public static bool awakeCalled = false;
-
-    protected float hD = 583f;
-    protected float vD = 237f;
 
     private int color1Tracker = 2;
     private int color2Tracker = 2;
@@ -58,14 +59,6 @@ public class GeneralPlug : MonoBehaviour
                 extensionCord2Color = null;
             }
         }
-        Debug.Log("test3");
-        topExtensionCordPositions = new Vector2[6];
-        topExtensionCordPositions[0] = new Vector2(730, 698);
-        topExtensionCordPositions[1] = new Vector2(818, 698);
-        topExtensionCordPositions[2] = new Vector2(910, 698);
-        topExtensionCordPositions[3] = new Vector2(1013, 698);
-        topExtensionCordPositions[4] = new Vector2(1110, 698);
-        topExtensionCordPositions[5] = new Vector2(1204, 698);
 
         if (extensionCord1Color == "Blue") { color1 = imageArray[0]; }
         else if (extensionCord1Color == "Yellow") { color1 = imageArray[1]; }
@@ -79,7 +72,7 @@ public class GeneralPlug : MonoBehaviour
 
         for (int i = 0; i < 6; i++)
         {
-            InstantiatePlug(topExtensionCordPositions[i]);
+            InstantiatePlug(topExtensionCordSpawns[i]);
         }
 
         GameObject eventObj = GameObject.Find("EventSystem");
@@ -88,34 +81,20 @@ public class GeneralPlug : MonoBehaviour
             eventManager = eventObj.GetComponent<EventManager>();
         }
 
-        //Plug positions
-        //ExtensionCord1
-        extensionCord1Slots = new Vector2[6];
-        extensionCord1Slots[0] = new Vector2(730, 545);
-        extensionCord1Slots[1] = new Vector2(818, 545);
-        extensionCord1Slots[2] = new Vector2(910, 545);
-        extensionCord1Slots[3] = new Vector2(1013, 545);
-        extensionCord1Slots[4] = new Vector2(1110, 545);
-        extensionCord1Slots[5] = new Vector2(1204, 545);
-        //ExtensionCord2
-        extensionCord2Slots = new Vector2[6];
-        extensionCord2Slots[0] = new Vector2(730, 370);
-        extensionCord2Slots[1] = new Vector2(818, 370);
-        extensionCord2Slots[2] = new Vector2(910, 370);
-        extensionCord2Slots[3] = new Vector2(1013, 370);
-        extensionCord2Slots[4] = new Vector2(1110, 370);
-        extensionCord2Slots[5] = new Vector2(1204, 370);
-
-        for (int i = 0; i < extensionCord1Slots.Length; i++) //ExtensionCord1
+        for (int i = 0; i < plugSlotSpawn1.Length; i++) //ExtensionCord1
         {
-            GameObject newSlot = Instantiate(plugSlots, extensionCord1Slots[i], Quaternion.identity, transform);
+            Transform position1 = plugSlotSpawn1[i].transform;
+            Vector3 positionVector = position1.position;
+            GameObject newSlot = Instantiate(plugSlots, positionVector, Quaternion.identity, transform);
             PlugTaskSlot slotScript = newSlot.GetComponent<PlugTaskSlot>();
             slotScript.color = extensionCord1Color;
             instantiatedSlots.Add(newSlot);
         }
-        for (int i = 0; i < extensionCord2Slots.Length; i++) //ExtensionCord2
+        for (int i = 0; i < plugSlotSpawn2.Length; i++) //ExtensionCord2
         {
-            GameObject newSlot = Instantiate(plugSlots, extensionCord2Slots[i], Quaternion.identity, transform);
+            Transform position1 = plugSlotSpawn2[i].transform;
+            Vector3 positionVector = position1.position;
+            GameObject newSlot = Instantiate(plugSlots, positionVector, Quaternion.identity, transform);
             PlugTaskSlot slotScript = newSlot.GetComponent<PlugTaskSlot>();
             slotScript.color = extensionCord2Color;
             instantiatedSlots.Add(newSlot);
@@ -123,42 +102,44 @@ public class GeneralPlug : MonoBehaviour
 
         Transform parentTransform = transform;
         // Create the Color Identifier
-        Vector2 position1 = new Vector2(680, 547); //ExtensionCord1 position
-        Vector2 position2 = new Vector2(680, 360); //ExtensionCord2 position
+        Transform position = colorIdentifierSpawns[0].transform;
+        Vector3 positionV1 = position.position;
+        Transform position2 = colorIdentifierSpawns[1].transform;
+        Vector3 positionV2 = position2.position;
         Quaternion rotation = Quaternion.identity; // No rotation
 
         if (extensionCord1Color == "Blue")
         {
-            Instantiate(colorIdentifier[0], position1, rotation, parentTransform);
+            Instantiate(colorIdentifier[0], positionV1, rotation, parentTransform);
         }
         else if (extensionCord1Color == "Yellow")
         {
-            Instantiate(colorIdentifier[1], position1, rotation, parentTransform);
+            Instantiate(colorIdentifier[1], positionV1, rotation, parentTransform);
         }
         else if (extensionCord1Color == "Red")
         {
-            Instantiate(colorIdentifier[2], position1, rotation, parentTransform);
+            Instantiate(colorIdentifier[2], positionV1, rotation, parentTransform);
         }
         else if (extensionCord1Color == "Green")
         {
-            Instantiate(colorIdentifier[3], position1, rotation, parentTransform);
+            Instantiate(colorIdentifier[3], positionV1, rotation, parentTransform);
         }
         //
         if (extensionCord2Color == "Blue")
         {
-            Instantiate(colorIdentifier[0], position2, rotation, parentTransform);
+            Instantiate(colorIdentifier[0], positionV2, rotation, parentTransform);
         }
         else if (extensionCord2Color == "Yellow")
         {
-            Instantiate(colorIdentifier[1], position2, rotation, parentTransform);
+            Instantiate(colorIdentifier[1], positionV2, rotation, parentTransform);
         }
         else if (extensionCord2Color == "Red")
         {
-            Instantiate(colorIdentifier[2], position2, rotation, parentTransform);
+            Instantiate(colorIdentifier[2], positionV2, rotation, parentTransform);
         }
         else if (extensionCord2Color == "Green")
         {
-            Instantiate(colorIdentifier[3], position2, rotation, parentTransform);
+            Instantiate(colorIdentifier[3], positionV2, rotation, parentTransform);
         }
         Debug.Log(extensionCord1Color);
         Debug.Log(extensionCord2Color);
@@ -171,52 +152,55 @@ public class GeneralPlug : MonoBehaviour
             Debug.Log("Task Completed");
             eventManager.ChecksTasksForID(taskID);
             eventManager.UpdateBoolArrayGivenID(taskID);
+            eventManager.AddScore(score);
             Destroy(this.gameObject);
             awakeCalled = false;
         }
         text.text = $"Number of Plugs to match: {4 - numberOfCorrectPlaces}";
     }
 
-    public void InstantiatePlug(Vector2 position)
+    public void InstantiatePlug(GameObject spawnLocation)
     {
+        Transform position = spawnLocation.transform;
+        Vector3 positionVector = position.position;
         int randomIndex = Random.Range(0, 3);
         if (randomIndex == 0) // 0 spawns a neutralColorTracker
         {
             if (neutralColorTracker == 0)
             {
-                InstantiatePlug(position);
+                InstantiatePlug(spawnLocation);
             }
             else
             {
                 neutralColorTracker--;
                 //Instantiate(neutralPlug, position, Quaternion.identity, topExtensionCord.transform);
-                Instantiate(neutralPlug, position, Quaternion.identity, this.transform);
+                Instantiate(neutralPlug, positionVector, Quaternion.identity, this.transform);
             }
         }
         else if (randomIndex == 1) // 1 spawns color1
         {
             if (color1Tracker == 0)
             {
-                InstantiatePlug(position);
+                InstantiatePlug(spawnLocation);
             }
             else
             {
                 color1Tracker--;
                 //Instantiate(color1, position, Quaternion.identity, topExtensionCord.transform);
-                Instantiate(color1, position, Quaternion.identity, this.transform);
+                Instantiate(color1, positionVector, Quaternion.identity, this.transform);
             }
         }
         else if (randomIndex == 2) // 2 spawns color2
         {
             if (color2Tracker == 0)
             {
-                InstantiatePlug(position);
+                InstantiatePlug(spawnLocation);
             }
             else
             {
                 color2Tracker--;
                 //Instantiate(color2, position, Quaternion.identity, topExtensionCord.transform);
-                Instantiate(color2, position, Quaternion.identity, this.transform);
+                Instantiate(color2, positionVector, Quaternion.identity, this.transform);
             }
         }
     }

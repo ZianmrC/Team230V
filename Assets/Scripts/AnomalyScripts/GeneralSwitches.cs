@@ -8,6 +8,7 @@ using System;
 
 public class GeneralSwitches : MonoBehaviour
 {
+    public int score = 5;
     private GameObject manager;
     private TaskInfo taskInfo;
     [HideInInspector] public int taskID;
@@ -45,17 +46,17 @@ public class GeneralSwitches : MonoBehaviour
             inputsRequired = 4;
             positions = new Vector2[inputsRequired];
 
-            positions[0] = new Vector2(-200, -40);
-            positions[1] = new Vector2(-75, -40);
-            positions[2] = new Vector2(75, -40);
-            positions[3] = new Vector2(200, -40);
+            positions[0] = new Vector2(-300, -40);
+            positions[1] = new Vector2(-125, -40);
+            positions[2] = new Vector2(125, -40);
+            positions[3] = new Vector2(300, -40);
 
             greenCheckPositions = new Vector2[inputsRequired];
 
-            greenCheckPositions[0] = new Vector2(-200, 40);
-            greenCheckPositions[1] = new Vector2(-75, 40);
-            greenCheckPositions[2] = new Vector2(75, 40);
-            greenCheckPositions[3] = new Vector2(200, 40);
+            greenCheckPositions[0] = new Vector2(-300, 60);
+            greenCheckPositions[1] = new Vector2(-125, 60);
+            greenCheckPositions[2] = new Vector2(125, 60);
+            greenCheckPositions[3] = new Vector2(300, 60);
         }
         inputs = new int[inputsRequired];
         correctSequence = new List<int>(Enumerable.Repeat(0, inputsRequired));
@@ -133,6 +134,7 @@ public class GeneralSwitches : MonoBehaviour
                     Debug.Log(taskID);
                     eventManager.ChecksTasksForID(taskID);
                     eventManager.UpdateBoolArrayGivenID(taskID);
+                    eventManager.AddScore(score);
                     Destroy(gameObject);
                 }
                 else if(hasOne) //If incorrect input detected

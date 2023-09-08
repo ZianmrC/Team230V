@@ -7,7 +7,8 @@ using TMPro;
 
 public class EventManager : MonoBehaviour
 {
-    public TextMeshProUGUI text;
+    public TextMeshProUGUI electricityText;
+    public TextMeshProUGUI scoreText;
     public string GameOverScene = "GameOver Scene";
     public static int taskCounter = 0;
     public static float TotalGameTime;
@@ -16,10 +17,10 @@ public class EventManager : MonoBehaviour
     public TextMeshProUGUI taskCounterText;
     public int numberOfTasksUntilOverload = 2; //The minimum number of tasks present in order to start incrementing the Electricity Overload
     public static int Lives = 3;
+    public static int Score;
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
@@ -39,7 +40,8 @@ public class EventManager : MonoBehaviour
             {
                 percentage += (taskCounter - 1);
             }
-            text.text = $"Electricity Overload: {percentage}%";
+            electricityText.text = $"Electricity Overload: {percentage}%";
+            scoreText.text = $"Current Score: {Score}";
             updateTimer = 0f;
             //Debug.Log($"Task Counter: {taskCounter}");
         }
@@ -81,6 +83,10 @@ public class EventManager : MonoBehaviour
         AnamolySpawner.occupiedAnomalyLocations[ID] = false;
         AnamolySpawner.availableSpots.Add(ID);
 
+    }
+    public void AddScore(int score)
+    {
+        EventManager.Score += score;
     }
 
 }
