@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Start_Tutorial.unity
     guid: b5627d0f4a470ef4bbf73b6fa0754f72
   - enabled: 1
+    path: Assets/Scenes/Backup_MainScene.unity
+    guid: f3b776df96bda784b9566d776f6ac8df
+  - enabled: 1
     path: Assets/Scenes/Philipp_Scene.unity
     guid: 3e5a742f8637f454dac6d4c392a27dd9
   - enabled: 1

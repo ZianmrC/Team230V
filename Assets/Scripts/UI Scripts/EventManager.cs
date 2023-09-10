@@ -9,7 +9,7 @@ public class EventManager : MonoBehaviour
 {
     public TextMeshProUGUI electricityText;
     public TextMeshProUGUI scoreText;
-    public string GameOverScene = "GameOver Scene";
+    public static string GameOverScene = "GameOver Scene";
     public static int taskCounter = 0;
     public static float TotalGameTime;
     private float updateTimer;
@@ -18,9 +18,12 @@ public class EventManager : MonoBehaviour
     public int numberOfTasksUntilOverload = 2; //The minimum number of tasks present in order to start incrementing the Electricity Overload
     public static int Lives = 3;
     public static int Score;
+
+    public GameObject[] livesIcons;
     // Start is called before the first frame update
     void Start()
     {
+
     }
 
     // Update is called once per frame
@@ -87,6 +90,22 @@ public class EventManager : MonoBehaviour
     public void AddScore(int score)
     {
         EventManager.Score += score;
+    }
+    public void LoseLife()
+    {
+        Lives--;
+        if(Lives == 2)
+        {
+            Destroy(livesIcons[2].gameObject);
+        }
+        else if(Lives == 1)
+        {
+            Destroy(livesIcons[1].gameObject);
+        }
+        else if(Lives == 0)
+        {
+            SceneManager.LoadScene(GameOverScene);
+        }
     }
 
 }

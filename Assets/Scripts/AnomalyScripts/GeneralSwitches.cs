@@ -28,10 +28,16 @@ public class GeneralSwitches : MonoBehaviour
     private bool holdingDown = false;
     private int currentStep = 0;
     private List<int> correctSequence = new List<int>();
+
+    //Help Text
+    public TextMeshProUGUI helpText;
+    public float helpTimer;
+    private float currentTimer;
+
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(taskID);
+        helpText.enabled = false;
         manager = GameObject.Find("EventSystem");
         eventManager = manager.GetComponent<EventManager>();
 
@@ -79,6 +85,11 @@ public class GeneralSwitches : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        currentTimer += Time.deltaTime;
+        if(currentTimer > helpTimer)
+        {
+            helpText.enabled = true;
+        }
         float roundedTimer = Mathf.Round(timer * 10f) / 10f;
         timerText.text = $"{roundedTimer}";
         if (currentStep < inputsRequired)

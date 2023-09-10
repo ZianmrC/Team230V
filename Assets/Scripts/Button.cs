@@ -11,10 +11,13 @@ public class Button : MonoBehaviour
     public GameObject targetRoom;
     private string currentRoom = "Kitchen";
     public bool isLeftButton;
+
+    EventManager eventManager;
     // Start is called before the first frame update
     void Start()
     {
         currentRoom = "Kitchen";
+        eventManager = GameObject.Find("EventSystem").GetComponent<EventManager>();
     }
 
     // Update is called once per frame
@@ -117,5 +120,9 @@ public class Button : MonoBehaviour
             targetRoom = kitchen;
         }
         return targetRoom;
+    }
+    public void LoseLife()
+    {
+        eventManager.LoseLife();
     }
 }

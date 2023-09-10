@@ -41,10 +41,15 @@ public class GeneralPlug : MonoBehaviour
     private GameObject color1;
     private GameObject color2;
 
+    //Help text (If player doesn't achieve the goal after a certain amount of time, show help text)
+    private float currentTimer;
+    public float helpTimer;
+    public TextMeshProUGUI helpText;
+
 
     private void Start()
     {
-        Debug.Log("test1");
+        helpText.enabled = false;
         numberOfCorrectPlaces = 0;
         // ENSURE TO FIX THIS ONCE ACTUAL ASSETS MADE
         // Pick 2 Random Colors
@@ -147,6 +152,7 @@ public class GeneralPlug : MonoBehaviour
 
     private void Update()
     {
+        currentTimer += Time.deltaTime;
         if (numberOfCorrectPlaces == 4)
         {
             Debug.Log("Task Completed");
@@ -156,7 +162,12 @@ public class GeneralPlug : MonoBehaviour
             Destroy(this.gameObject);
             awakeCalled = false;
         }
-        text.text = $"Number of Plugs to match: {4 - numberOfCorrectPlaces}";
+
+        if(helpTimer < currentTimer)
+        {
+            helpText.enabled = true;
+        }
+        text.text = $"Plugs Left: {4 - numberOfCorrectPlaces}";
     }
 
     public void InstantiatePlug(GameObject spawnLocation)

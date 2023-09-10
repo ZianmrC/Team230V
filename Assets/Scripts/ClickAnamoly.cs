@@ -44,10 +44,17 @@ public class ClickAnamoly : MonoBehaviour
                             taskNumber = GetComponent<TaskInfo>().taskID;
                             task.GetComponent<GeneralPlug>().taskID = taskNumber; //Pass value of Task ID to the Task's Script
                         }
+                        else if(task.GetComponent<BrokenToasterTask>() != null)
+                        {
+                            taskNumber = GetComponent<TaskInfo>().taskID;
+                            task.GetComponent<BrokenToasterTask>().taskID = taskNumber; //Pass value of Task ID to the Task's Script
+                        }
                         GameObject instantiatedObject = Instantiate(task);
                         instantiatedObject.transform.SetParent(canvas.transform, false);
                         RectTransform instantiatedRT = instantiatedObject.GetComponent<RectTransform>();
                         instantiatedRT.anchoredPosition = Vector2.zero;
+
+                        instantiatedRT.SetAsFirstSibling();
                     }
                     else { throw new System.Exception(); }
 

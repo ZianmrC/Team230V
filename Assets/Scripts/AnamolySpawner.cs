@@ -12,6 +12,7 @@ public class AnamolySpawner : MonoBehaviour
     public static List<int> availableSpots = new List<int>();
     public GameObject SwitchTask;
     public GameObject PlugTask;
+    public GameObject BrokenToasterTask;
     public GameObject BRTask; //Bathroom Task
     public GameObject ParentTask; //Parent Task
 
@@ -109,10 +110,18 @@ public class AnamolySpawner : MonoBehaviour
         if (occupiedAnomalyLocations[randomLocation] == false)
         {
             occupiedAnomalyLocations[randomLocation] = true; //Signify that task is already at spawn location
-            if (randomLocation < 3)
+            if(randomLocation == 0)
+            {
+                InstantiateAnomaly(BrokenToasterTask, anomalyLocations[randomLocation], randomLocation);
+            }
+            else if (randomLocation < 3)
             {
                 //InstantiateAnomaly(ParentTask, anomalyLocations[randomLocation], randomLocation); Causes Errors
                 InstantiateAnomaly(SwitchTask, anomalyLocations[randomLocation], randomLocation);
+            }
+            else if(randomLocation == 5)
+            {
+                InstantiateAnomaly(PlugTask, anomalyLocations[randomLocation], randomLocation);
             }
             else if (randomLocation < 6)
             {
