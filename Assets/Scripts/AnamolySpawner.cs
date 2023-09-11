@@ -138,4 +138,8 @@ public class AnamolySpawner : MonoBehaviour
         anomaly.GetComponent<TaskInfo>().taskID = taskID;
         Instantiate(anomaly, location);
     }
+    public void DecreaseOverload(int decrement)
+    {
+
+    }
 }

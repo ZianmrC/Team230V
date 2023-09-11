@@ -167,6 +167,7 @@ MonoBehaviour:
   bathroom: {fileID: 0}
   targetRoom: {fileID: 0}
   isLeftButton: 0
+  taskToRemove: {fileID: 8080908104498722314}
 --- !u!1 &4378905818095205209
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,3 +541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcbfedd2e3386454aaff48e0d118e13d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  taskID: 0
+  score: 5
+  rectTransform: {fileID: 0}
+  spawnPosition: {x: 0, y: 0}

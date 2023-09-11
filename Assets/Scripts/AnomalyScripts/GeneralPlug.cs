@@ -159,6 +159,7 @@ public class GeneralPlug : MonoBehaviour
             eventManager.ChecksTasksForID(taskID);
             eventManager.UpdateBoolArrayGivenID(taskID);
             eventManager.AddScore(score);
+            eventManager.DecreaseOverload(2);
             Destroy(this.gameObject);
             awakeCalled = false;
         }

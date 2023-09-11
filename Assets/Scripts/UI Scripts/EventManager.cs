@@ -4,11 +4,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System.Threading;
 
 public class EventManager : MonoBehaviour
 {
     public TextMeshProUGUI electricityText;
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI damageText;
+    private bool tookDamage;
+    private float damageTimer;
+
     public static string GameOverScene = "GameOver Scene";
     public static int taskCounter = 0;
     public static float TotalGameTime;
@@ -23,7 +28,8 @@ public class EventManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        Score = 0;
+        damageText.enabled = false;
     }
 
     // Update is called once per frame
@@ -52,7 +58,17 @@ public class EventManager : MonoBehaviour
         {
             SceneManager.LoadScene(GameOverScene);
         }
-    }
+        if(tookDamage)
+        {
+            damageTimer += Time.deltaTime;
+            if(damageTimer > 5f)
+            {
+                damageText.enabled = false;
+                tookDamage = false;
+            }
+            }
+        }
+    public void DecreaseOverload(int decrement) { percentage -= decrement; }
     public void CountTasks()
     {
         GameObject[] taskObjects = GameObject.FindGameObjectsWithTag("Task");
@@ -87,10 +103,7 @@ public class EventManager : MonoBehaviour
         AnamolySpawner.availableSpots.Add(ID);
 
     }
-    public void AddScore(int score)
-    {
-        EventManager.Score += score;
-    }
+    public void AddScore(int score) { EventManager.Score += score; }
     public void LoseLife()
     {
         Lives--;
@@ -106,6 +119,8 @@ public class EventManager : MonoBehaviour
         {
             SceneManager.LoadScene(GameOverScene);
         }
+        damageText.enabled = true;
+        tookDamage = true;
     }
 
 }

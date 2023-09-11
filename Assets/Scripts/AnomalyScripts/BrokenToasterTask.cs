@@ -28,7 +28,6 @@ public class BrokenToasterTask : MonoBehaviour, IDropHandler
 
             if (objectName == "Parent")
             {
-                Debug.Log("feragrwu");
                 eventManager.ChecksTasksForID(taskID);
                 eventManager.UpdateBoolArrayGivenID(taskID);
                 eventManager.AddScore(score);

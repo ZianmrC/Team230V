@@ -13,11 +13,25 @@ public class Button : MonoBehaviour
     public bool isLeftButton;
 
     EventManager eventManager;
+
+    //Variables only Applicable to Tasks that use Parent Mechanic
+    public GameObject taskToRemove;
+    private int taskID;
+    private int score;
+
     // Start is called before the first frame update
     void Start()
     {
         currentRoom = "Kitchen";
         eventManager = GameObject.Find("EventSystem").GetComponent<EventManager>();
+        if(taskToRemove != null ) //If button is used in Parent Task
+        {
+            if (taskToRemove.GetComponent<BrokenToasterTask>() != null)
+            {
+                taskID = taskToRemove.GetComponent<BrokenToasterTask>().taskID;
+                score = taskToRemove.GetComponent<BrokenToasterTask>().score;
+            }
+        }
     }
 
     // Update is called once per frame
@@ -124,5 +138,14 @@ public class Button : MonoBehaviour
     public void LoseLife()
     {
         eventManager.LoseLife();
+        RemoveTask(taskToRemove);
+    }
+
+    public void RemoveTask(GameObject task) //Called after parent task was clicked on, resulting in Lostlife
+    {
+        eventManager.ChecksTasksForID(taskID);
+        eventManager.UpdateBoolArrayGivenID(taskID);
+        eventManager.AddScore(score);
+        Destroy(task);
     }
 }

@@ -146,6 +146,7 @@ public class GeneralSwitches : MonoBehaviour
                     eventManager.ChecksTasksForID(taskID);
                     eventManager.UpdateBoolArrayGivenID(taskID);
                     eventManager.AddScore(score);
+                    eventManager.DecreaseOverload(1);
                     Destroy(gameObject);
                 }
                 else if(hasOne) //If incorrect input detected
