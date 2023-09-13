@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Task
+  - Selectable
   layers:
   - Default
   - TransparentFX
