@@ -12,6 +12,7 @@ public class EventManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI damageText;
     private bool tookDamage;
+    public bool IncreaseOverload;
     private float damageTimer;
 
     public static string GameOverScene = "GameOver Scene";
@@ -30,6 +31,7 @@ public class EventManager : MonoBehaviour
     {
         Score = 0;
         damageText.enabled = false;
+        TotalGameTime = 0;
     }
 
     // Update is called once per frame
@@ -45,9 +47,10 @@ public class EventManager : MonoBehaviour
             {
                 percentage -= 2;
             }
-            else if (taskCounter > 0 && taskCounter >= numberOfTasksUntilOverload)
+            else if (taskCounter > 0 && taskCounter >= numberOfTasksUntilOverload && IncreaseOverload)
             {
                 percentage += (taskCounter - 1);
+                //Feedback from Peer Tutor: Maybe pause Overload percentage when currently doing task?
             }
             electricityText.text = $"Electricity Overload: {percentage}%";
             scoreText.text = $"Current Score: {Score}";

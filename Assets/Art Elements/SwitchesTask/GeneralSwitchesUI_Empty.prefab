@@ -365,7 +365,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 5
   taskID: 4
-  difficulty1Time: 120
+  difficulty1Time: 2
   maxTime: 4
   inputImageArray:
   - {fileID: 8116730253714577161, guid: cb896aad868ffed408f54749876710ce, type: 3}
@@ -375,6 +375,7 @@ MonoBehaviour:
   greenCheck: {fileID: 5734941695020449449, guid: 205390693a9af6244844a69ca2518b8c, type: 3}
   helpText: {fileID: 3890420840761729697}
   helpTimer: 8
+  taskVariables: {fileID: 11400000, guid: c7eec3dca3601a646a85ee318e450124, type: 2}
 --- !u!1 &4348511490627992283
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,7 +8,6 @@ using System;
 
 public class GeneralSwitches : MonoBehaviour
 {
-    public int score = 5;
     private GameObject manager;
     private TaskInfo taskInfo;
     [HideInInspector] public int taskID;
@@ -16,11 +15,9 @@ public class GeneralSwitches : MonoBehaviour
     private int inputsRequired;
     private TextMeshProUGUI timerText;
 
-    public float difficulty1Time; //Make this type of activity harder when the total game time has surpassed this amount of time
     private int[] inputs;
     private bool waiting;
-    private float timer = 4;
-    public float maxTime = 4f; //The maximum time allowed for player to input correct sequence before having to try again
+    private float timer;
     public GameObject[] inputImageArray;
     public GameObject greenCheck;
     private Vector2[] positions; //Positions of Image Pictures
@@ -34,17 +31,35 @@ public class GeneralSwitches : MonoBehaviour
     public float helpTimer;
     private float currentTimer;
 
+    //TaskVariables
+    public TaskVariables taskVariables;
+
     // Start is called before the first frame update
     void Start()
     {
+        timer = taskVariables.maxTime;
         helpText.enabled = false;
         manager = GameObject.Find("EventSystem");
         eventManager = manager.GetComponent<EventManager>();
 
-        if (EventManager.TotalGameTime > difficulty1Time)
+        if (EventManager.TotalGameTime > taskVariables.difficulty1Time)
         {
-            //inputsRequired = 5;
-            //positions = new Vector2[inputsRequired];
+            inputsRequired = 5;
+            positions = new Vector2[inputsRequired];
+
+            positions[0] = new Vector2(-400, -40);
+            positions[1] = new Vector2(-200, -40);
+            positions[2] = new Vector2(0, -40);
+            positions[3] = new Vector2(200, -40);
+            positions[4] = new Vector2(400, -40);
+
+            greenCheckPositions = new Vector2[inputsRequired];
+
+            greenCheckPositions[0] = new Vector2(-400, 60);
+            greenCheckPositions[1] = new Vector2(-200, 60);
+            greenCheckPositions[2] = new Vector2(0, 60);
+            greenCheckPositions[3] = new Vector2(200, 60);
+            greenCheckPositions[4] = new Vector2(400, -40);
 
         }
         else
@@ -78,6 +93,7 @@ public class GeneralSwitches : MonoBehaviour
             int index = inputs[i];
             InstantiateImage(positions[i], inputImageArray[index]);
         }
+        Debug.Log($"Switch Task: {positions[0]}, {positions[1]}, {positions[2]}, {positions[3]}");
         Transform child = transform.Find("TaskTimerText");
         timerText = child.GetComponent<TextMeshProUGUI>();
     }
@@ -141,11 +157,9 @@ public class GeneralSwitches : MonoBehaviour
                 bool hasOne = correctSequence.Any(item => item == 1);
                 if(allTrue)
                 {
-                    Debug.Log("Task Completed!");
-                    Debug.Log(taskID);
                     eventManager.ChecksTasksForID(taskID);
                     eventManager.UpdateBoolArrayGivenID(taskID);
-                    eventManager.AddScore(score);
+                    eventManager.AddScore(taskVariables.switchScore);
                     eventManager.DecreaseOverload(1);
                     Destroy(gameObject);
                 }
@@ -184,7 +198,7 @@ public class GeneralSwitches : MonoBehaviour
             correctSequence[i] = 0;
         }
         currentStep = 0;
-        timer = 4f;
+        timer = taskVariables.maxTime;
         Transform[] children = this.GetComponentsInChildren<Transform>().Where(child => child.name == "greenTick(Clone)").ToArray();
 
         foreach (Transform child in children)

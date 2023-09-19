@@ -37,56 +37,7 @@ public class Button : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit))
-            {
-                if (hit.collider.gameObject == gameObject)
-                {
-                    if (isLeftButton && currentRoom == "Kitchen")
-                    {
-                        gameCamera.Move(livingroom);
-                        currentRoom = "Livingroom";
-                        targetRoom = livingroom;
-                    }
-                    else if (!isLeftButton && currentRoom == "Kitchen")
-                    {
-                        gameCamera.Move(bathroom);
-                        currentRoom = "Bathroom";
-                        targetRoom = bathroom;
-                    }
-                    else if (isLeftButton && currentRoom == "Bathroom")
-                    {
-                        gameCamera.Move(kitchen);
-                        currentRoom = "Kitchen";
-                        targetRoom = kitchen;
-
-                    }
-                    else if (!isLeftButton && currentRoom == "Bathroom")
-                    {
-                        gameCamera.Move(livingroom);
-                        currentRoom = "Livingroom";
-                        targetRoom = livingroom;
-                    }
-                    else if (isLeftButton && currentRoom == "Livingroom")
-                    {
-                        gameCamera.Move(bathroom);
-                        currentRoom = "Bathroom";
-                        targetRoom = bathroom;
-
-                    }
-                    else if (!isLeftButton && currentRoom == "Livingroom")
-                    {
-                        gameCamera.Move(kitchen);
-                        currentRoom = "Kitchen";
-                        targetRoom = kitchen;
-                    }
-                }
-            }
-        }
     }
 
     public void ChangeRoom()
@@ -98,40 +49,46 @@ public class Button : MonoBehaviour
     {
         if (isLeftButton && currentRoom == "Kitchen")
         {
-            gameCamera.Move(livingroom);
-            currentRoom = "Livingroom";
-            targetRoom = livingroom;
+            gameCamera.Move(bathroom);
+            currentRoom = "Bathroom";
+            targetRoom = bathroom;
+            Debug.Log("1");
         }
         else if (!isLeftButton && currentRoom == "Kitchen")
         {
-            gameCamera.Move(bathroom);
-            currentRoom = "Bathroom";
-            targetRoom = bathroom;
+            gameCamera.Move(livingroom);
+            currentRoom = "Livingroom";
+            targetRoom = livingroom;
+            Debug.Log("2");
         }
         else if (isLeftButton && currentRoom == "Bathroom")
-        {
-            gameCamera.Move(kitchen);
-            currentRoom = "Kitchen";
-            targetRoom = kitchen;
-        }
-        else if (!isLeftButton && currentRoom == "Bathroom")
         {
             gameCamera.Move(livingroom);
             currentRoom = "Livingroom";
             targetRoom = livingroom;
-        }
-        else if (isLeftButton && currentRoom == "Livingroom")
-        {
-            gameCamera.Move(bathroom);
-            currentRoom = "Bathroom";
-            targetRoom = bathroom;
+            Debug.Log("3");
 
         }
-        else if (!isLeftButton && currentRoom == "Livingroom")
+        else if (!isLeftButton && currentRoom == "Bathroom")
         {
             gameCamera.Move(kitchen);
             currentRoom = "Kitchen";
             targetRoom = kitchen;
+            Debug.Log("4");
+        }
+        else if (isLeftButton && currentRoom == "Livingroom")
+        {
+            gameCamera.Move(kitchen);
+            currentRoom = "Kitchen";
+            targetRoom = kitchen;
+            Debug.Log("5");
+        }
+        else if (!isLeftButton && currentRoom == "Livingroom")
+        {
+            gameCamera.Move(bathroom);
+            currentRoom = "Bathroom";
+            targetRoom = bathroom;
+            Debug.Log("6");
         }
         return targetRoom;
     }

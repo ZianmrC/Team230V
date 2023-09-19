@@ -265,7 +265,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 753a0e2dbbdca5147ad2ca34b36e4e59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 5
   imageArray:
   - {fileID: 1806135942828916102, guid: 255bc4403892d204497483e0723c9e81, type: 3}
   - {fileID: 2712015390252680691, guid: 37312b0232abd9349ad2bde910ca8d65, type: 3}
@@ -309,6 +308,7 @@ MonoBehaviour:
   plugSlots: {fileID: 2323288949650969736, guid: 90d14fc54eef1254e88c4b436896a15f, type: 3}
   helpTimer: 10
   helpText: {fileID: 8754288671618980188}
+  taskVariables: {fileID: 11400000, guid: c7eec3dca3601a646a85ee318e450124, type: 2}
 --- !u!1 &1106038377193172924
 GameObject:
   m_ObjectHideFlags: 0

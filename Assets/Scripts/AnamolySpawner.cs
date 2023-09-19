@@ -23,14 +23,15 @@ public class AnamolySpawner : MonoBehaviour
     private float originalChance;
 
     private float timeSinceLastSpawn;
+    private bool difficulty1;
+    private bool difficulty2;
     private GameObject e;
-    private bool difficultyIncrease1 = false;
-    private bool difficultyIncrease2 = false;
     EventManager eventManager;
+    public TaskVariables taskVariables;
     // Start is called before the first frame update
     void Start()
     {
-        originalChance = spawnChance;
+        originalChance = spawnChance; difficulty1 = false; difficulty2 = false;
         occupiedAnomalyLocations = new bool[anomalyLocations.Length];
         for(int i = 0; i<anomalyLocations.Length; i++)
         {
@@ -69,16 +70,16 @@ public class AnamolySpawner : MonoBehaviour
         }
 
         //Increase Spawn Chances if Anamoly not spawned
-        if(EventManager.TotalGameTime < 40 && !difficultyIncrease1)
+        if(EventManager.TotalGameTime > taskVariables.spawnerDifficultyIncrease1 && !difficulty1)
         {
             spawnChance += 5;
             maxSpawnTime -= 8;
-            difficultyIncrease1 = true;
+            difficulty1 = true;
         }
-        else if (EventManager.TotalGameTime < 80 && !difficultyIncrease2)
+        else if (EventManager.TotalGameTime > taskVariables.spawnerDifficultyIncrease1 && !difficulty2)
         {
             percentageIncrement += 2;
-            difficultyIncrease2 = true;
+            difficulty2 = true;
         }
 
     }
@@ -86,7 +87,7 @@ public class AnamolySpawner : MonoBehaviour
     {
         if (availableSpots.Count == 0)
         {
-            Debug.Log("All Tasks are present");
+            //Debug.Log("All Tasks are present");
             return;
         }
 

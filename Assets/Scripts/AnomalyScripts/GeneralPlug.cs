@@ -6,7 +6,6 @@ using TMPro;
 
 public class GeneralPlug : MonoBehaviour
 {
-    public int score = 5;
     public static int numberOfCorrectPlaces = 0;
     EventManager eventManager;
     public GameObject[] imageArray;
@@ -45,6 +44,8 @@ public class GeneralPlug : MonoBehaviour
     private float currentTimer;
     public float helpTimer;
     public TextMeshProUGUI helpText;
+
+    public TaskVariables taskVariables;
 
 
     private void Start()
@@ -158,7 +159,7 @@ public class GeneralPlug : MonoBehaviour
             Debug.Log("Task Completed");
             eventManager.ChecksTasksForID(taskID);
             eventManager.UpdateBoolArrayGivenID(taskID);
-            eventManager.AddScore(score);
+            eventManager.AddScore(taskVariables.plugScore);
             eventManager.DecreaseOverload(2);
             Destroy(this.gameObject);
             awakeCalled = false;
