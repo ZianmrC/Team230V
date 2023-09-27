@@ -52,21 +52,18 @@ public class Button : MonoBehaviour
             gameCamera.Move(bathroom);
             currentRoom = "Bathroom";
             targetRoom = bathroom;
-            Debug.Log("1");
         }
         else if (!isLeftButton && currentRoom == "Kitchen")
         {
             gameCamera.Move(livingroom);
             currentRoom = "Livingroom";
             targetRoom = livingroom;
-            Debug.Log("2");
         }
         else if (isLeftButton && currentRoom == "Bathroom")
         {
             gameCamera.Move(livingroom);
             currentRoom = "Livingroom";
             targetRoom = livingroom;
-            Debug.Log("3");
 
         }
         else if (!isLeftButton && currentRoom == "Bathroom")
@@ -74,21 +71,18 @@ public class Button : MonoBehaviour
             gameCamera.Move(kitchen);
             currentRoom = "Kitchen";
             targetRoom = kitchen;
-            Debug.Log("4");
         }
         else if (isLeftButton && currentRoom == "Livingroom")
         {
             gameCamera.Move(kitchen);
             currentRoom = "Kitchen";
             targetRoom = kitchen;
-            Debug.Log("5");
         }
         else if (!isLeftButton && currentRoom == "Livingroom")
         {
             gameCamera.Move(bathroom);
             currentRoom = "Bathroom";
             targetRoom = bathroom;
-            Debug.Log("6");
         }
         return targetRoom;
     }

@@ -144,6 +144,7 @@
     <Compile Include="Assets\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\Utils\RenderTextureFactory.cs" />
     <Compile Include="Assets\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\Models\BuiltinDebugViewsModel.cs" />
     <Compile Include="Assets\VIRTI\VOXEL-Forniture-FREE\Example\Standard Assets\Utility\FOVKick.cs" />
+    <Compile Include="Assets\Scripts\AnomalyScripts\WireTask\WireInfo.cs" />
     <Compile Include="Assets\Scripts\AnomalyScripts\GeneralPlug.cs" />
     <Compile Include="Assets\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\Components\EyeAdaptationComponent.cs" />
     <Compile Include="Assets\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\Models\ChromaticAberrationModel.cs" />
@@ -164,7 +165,7 @@
     <Compile Include="Assets\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\Models\AntialiasingModel.cs" />
     <Compile Include="Assets\Scripts\AnomalyScripts\BrokenToasterTask.cs" />
     <Compile Include="Assets\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\Models\DitheringModel.cs" />
-    <Compile Include="Assets\Scripts\AnomalyScripts\WireTask\WireInfo.cs" />
+    <Compile Include="Assets\Scripts\AnomalyScripts\WireTask\WireTaskDragPlug.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
