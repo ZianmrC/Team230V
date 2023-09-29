@@ -97,6 +97,7 @@ public class Button : MonoBehaviour
         eventManager.ChecksTasksForID(taskID);
         eventManager.UpdateBoolArrayGivenID(taskID);
         eventManager.AddScore(score);
+        EventManager.menuOpened = false;
         Destroy(task);
     }
 }

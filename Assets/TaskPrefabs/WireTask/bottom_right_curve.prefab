@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 181265612450210352}
   - component: {fileID: -5426073722042684165}
   - component: {fileID: -1302446333197141664}
+  - component: {fileID: -2011604859471421312}
   m_Layer: 5
   m_Name: bottom_right_curve
   m_TagString: Untagged
@@ -92,6 +93,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wireNumber: 0
   plugNumber: 1
+  plug: {fileID: 0}
 --- !u!61 &-1302446333197141664
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -116,5 +118,26 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 50, y: 50}
+  m_Size: {x: 49, y: 49}
   m_EdgeRadius: 0
+--- !u!50 &-2011604859471421312
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6261501314460207071}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7

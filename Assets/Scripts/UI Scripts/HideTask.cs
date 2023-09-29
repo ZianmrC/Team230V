@@ -9,11 +9,13 @@ public class HideTask : MonoBehaviour
 
     private Button button;
     private CanvasRenderer canvasRenderer;
+    EventManager eventManager;
     // Start is called before the first frame update
     void Start()
     {
         button = GetComponent<Button>();
         canvasRenderer = GetComponent<CanvasRenderer>();
+        eventManager = GameObject.Find("EventSystem").GetComponent<EventManager>();
     }
 
     // Update is called once per frame
@@ -24,6 +26,7 @@ public class HideTask : MonoBehaviour
     public void TaskToHide()
     {
         Destroy(task);
+        EventManager.menuOpened = false;
     }
     public void MakeUI_Invisible()
     {

@@ -16,4 +16,6 @@ public class TaskVariables : ScriptableObject
     [Header("PlugTask")]
     public int plugScore; //The amount of score rewarded once completing this task
 
+    [Header("WireTask")]
+    public int wireScore;
 }

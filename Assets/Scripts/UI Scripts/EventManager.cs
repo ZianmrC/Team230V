@@ -16,6 +16,7 @@ public class EventManager : MonoBehaviour
     private float damageTimer;
 
     public static string GameOverScene = "GameOver Scene";
+    public static bool menuOpened;
     public static int taskCounter = 0;
     public static float TotalGameTime;
     private float updateTimer;
@@ -32,6 +33,7 @@ public class EventManager : MonoBehaviour
         Score = 0;
         damageText.enabled = false;
         TotalGameTime = 0;
+        menuOpened = false;
     }
 
     // Update is called once per frame
@@ -106,7 +108,7 @@ public class EventManager : MonoBehaviour
         AnamolySpawner.availableSpots.Add(ID);
 
     }
-    public void AddScore(int score) { EventManager.Score += score; }
+    public void AddScore(int score) { EventManager.Score += score; EventManager.menuOpened = false; }
     public void LoseLife()
     {
         Lives--;
