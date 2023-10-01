@@ -77,7 +77,7 @@ public class WireTaskDragPlug : MonoBehaviour, IPointerDownHandler, IBeginDragHa
             else if (collision.gameObject.name.Contains("top_left_curve") && (objectTransform.rotation == Down || objectTransform.rotation == Down2)) { objectTransform.rotation = Left; }
 
             if (collision.gameObject.name.Contains("top_right_curve") && objectTransform.rotation == Left) { objectTransform.rotation = Up; }
-            else if (collision.gameObject.name.Contains("top_right_curve") && objectTransform.rotation == Down) { objectTransform.rotation = Right; }
+            else if (collision.gameObject.name.Contains("top_right_curve") && objectTransform.rotation == Down || objectTransform.rotation == Down2) { objectTransform.rotation = Right; }
 
             Destroy(collision.gameObject);
             currentWireNumber = wireInfo.wireNumber;

@@ -31,7 +31,7 @@ public class EventManager : MonoBehaviour
     void Start()
     {
         Score = 0;
-        damageText.enabled = false;
+        if(damageText != null ) { damageText.enabled = false; }
         TotalGameTime = 0;
         menuOpened = false;
     }
@@ -71,8 +71,8 @@ public class EventManager : MonoBehaviour
                 damageText.enabled = false;
                 tookDamage = false;
             }
-            }
         }
+    }
     public void DecreaseOverload(int decrement) { percentage -= decrement; }
     public void CountTasks()
     {

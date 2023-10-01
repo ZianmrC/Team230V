@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml.Serialization;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,14 +26,43 @@ public class WireGenerator : MonoBehaviour
 
     //Other Variables
     public float gridSize;
-    public GameObject[] plugSockets;
+    private Vector2[] plugSockets;
 
     private void Awake()
     {
-        numberOfWires = Layout1(1, plugSockets[0]) + Layout2(2, plugSockets[1]);
+        if(taskVariables.wireDifficulty1Time < EventManager.TotalGameTime)
+        {
+            plugSockets = new Vector2[4];
+            plugSockets[0] = new Vector2(-600, 150);
+            plugSockets[1] = new Vector2(-200, 150);
+            plugSockets[2] = new Vector2(200, 150);
+            plugSockets[3] = new Vector2(600, 150);
+        }
+        else
+        {
+            plugSockets = new Vector2[3];
+            plugSockets[0] = new Vector2(-400, 150);
+            plugSockets[1] = new Vector2(0, 150);
+            plugSockets[2] = new Vector2(400, 150);
+        }
+        Shuffle(plugSockets);
+        numberOfWires = Layout1(1, plugSockets[0]) + Layout2(2, plugSockets[1]) + Layout3(3, plugSockets[2]);
+    }
+    private Vector2[] Shuffle(Vector2[] array)
+    {
+        int n = array.Length;
+        for(int i = 0; i<n; i++)
+        {
+            int randomIndex = Random.Range(i, n);
+            Vector2 temp = array[i];
+            array[i] = array[randomIndex];
+            array[randomIndex] = temp;
+        }
+        return array;
     }
     private void Start()
     {
+
         wireCounter = 0;
         eventManager = GameObject.Find("EventSystem").GetComponent<EventManager>();
         Debug.Log(numberOfWires);
@@ -63,10 +93,9 @@ public class WireGenerator : MonoBehaviour
         wireInfo.plug = plug; //Assign the dragable plug as a field variable
     }
 
-    int Layout1(int plugNumber, GameObject startLocation) //Start location refers to what starting cord's location is
+    int Layout1(int plugNumber, Vector2 startLocation) //Start location refers to what starting cord's location is
     {
-        RectTransform transform = startLocation.GetComponent<RectTransform>();
-        Vector2 a = transform.anchoredPosition;
+        Vector2 a = startLocation;
         //Instantiate Vector2 Array containing Locations
         Vector2[] positions = new Vector2[18];
         positions[0] = (new Vector2(0, 0) * gridSize) + a; // 'a' is the start location of the particular entangled wire
@@ -117,10 +146,9 @@ public class WireGenerator : MonoBehaviour
         Instantiate(newPlug, this.transform);
         return positions.Length - 1;
     }
-    int Layout2(int plugNumber, GameObject startLocation)
+    int Layout2(int plugNumber, Vector2 startLocation)
     {
-        RectTransform transform = startLocation.GetComponent<RectTransform>();
-        Vector2 a = transform.anchoredPosition;
+        Vector2 a = startLocation;
         //Instantiate Vector2 Array containing Locations
         Vector2[] positions = new Vector2[18];
         positions[0] = (new Vector2(0, 0) * gridSize) + a; // 'a' is the start location of the particular entangled wire
@@ -168,6 +196,79 @@ public class WireGenerator : MonoBehaviour
         InstantiateWire(vertical, positions[17], 17, newPlug, plugNumber);
         
 
+        Instantiate(newPlug, this.transform);
+        return positions.Length - 1;
+    }
+    int Layout3(int plugNumber, Vector2 startLocation)
+    {
+        Vector2 a = startLocation;
+        //Instantiate Vector2 Array containing Locations
+        Vector2[] positions = new Vector2[28];
+        positions[0] = (new Vector2(0, 0) * gridSize) + a; // 'a' is the start location of the particular entangled wire
+        positions[1] = (new Vector2(0, -1) * gridSize) + a;
+        positions[2] = (new Vector2(0, -2) * gridSize) + a;
+        positions[3] = (new Vector2(-1, -2) * gridSize) + a; 
+        positions[4] = (new Vector2(-2, -2) * gridSize) + a; 
+        positions[5] = (new Vector2(-2, -3) * gridSize) + a; 
+        positions[6] = (new Vector2(-2, -4) * gridSize) + a; 
+        positions[7] = (new Vector2(-2, -5) * gridSize) + a; 
+        positions[8] = (new Vector2(-2, -6) * gridSize) + a; 
+        positions[9] = (new Vector2(-1, -6) * gridSize) + a; 
+        positions[10] = (new Vector2(0, -6) * gridSize) + a; 
+        positions[11] = (new Vector2(1, -6) * gridSize) + a; 
+        positions[12] = (new Vector2(2, -6) * gridSize) + a; 
+        positions[13] = (new Vector2(2, -5) * gridSize) + a; 
+        positions[14] = (new Vector2(2, -4) * gridSize) + a; 
+        positions[15] = (new Vector2(2, -3) * gridSize) + a; 
+        positions[16] = (new Vector2(1, -3) * gridSize) + a; 
+        positions[17] = (new Vector2(0, -3) * gridSize) + a; 
+        positions[18] = (new Vector2(-1, -3) * gridSize) + a; 
+        positions[19] = (new Vector2(-1, -4) * gridSize) + a; 
+        positions[20] = (new Vector2(-1, -5) * gridSize) + a; 
+        positions[21] = (new Vector2(0, -5) * gridSize) + a; 
+        positions[22] = (new Vector2(1, -5) * gridSize) + a; 
+        positions[23] = (new Vector2(1, -4) * gridSize) + a; 
+        positions[24] = (new Vector2(0, -4) * gridSize) + a; 
+        positions[25] = (new Vector2(0, -5) * gridSize) + a; 
+        positions[26] = (new Vector2(0, -6) * gridSize) + a; 
+        positions[27] = (new Vector2(0, -7) * gridSize) + a; 
+        
+
+        GameObject newPlug = plug;
+        RectTransform rect = newPlug.GetComponent<RectTransform>();
+        WireTaskDragPlug wireTask = newPlug.GetComponent<WireTaskDragPlug>();
+        wireTask.plugNumber = plugNumber;
+        rect.anchoredPosition = positions[0];
+
+        //Instantiate WireTypes using Vector2 Array
+        InstantiateWire(vertical, positions[1], 1, newPlug, plugNumber);
+        InstantiateWire(bottomRightCurve, positions[2], 2, newPlug, plugNumber);
+        InstantiateWire(horizontal, positions[3], 3, newPlug, plugNumber);
+        InstantiateWire(topLeftCurve, positions[4], 4, newPlug, plugNumber);
+        InstantiateWire(vertical, positions[5], 5, newPlug, plugNumber);
+        InstantiateWire(vertical, positions[6], 6, newPlug, plugNumber);
+        InstantiateWire(vertical, positions[7], 7, newPlug, plugNumber);
+        InstantiateWire(bottomLeftCurve, positions[8], 8, newPlug, plugNumber);
+        InstantiateWire(horizontal, positions[9], 9, newPlug, plugNumber);
+        InstantiateWire(horizontal, positions[10], 10, newPlug, plugNumber);
+        InstantiateWire(horizontal, positions[11], 11, newPlug, plugNumber);
+        InstantiateWire(bottomRightCurve, positions[12], 12, newPlug, plugNumber);
+        InstantiateWire(vertical, positions[13], 13, newPlug, plugNumber);
+        InstantiateWire(vertical, positions[14], 14, newPlug, plugNumber);
+        InstantiateWire(topRightCurve, positions[15], 15, newPlug, plugNumber);
+        InstantiateWire(horizontal, positions[16], 16, newPlug, plugNumber);
+        InstantiateWire(horizontal, positions[17], 17, newPlug, plugNumber);
+        InstantiateWire(topLeftCurve, positions[18], 18, newPlug, plugNumber);
+        InstantiateWire(vertical, positions[19], 19, newPlug, plugNumber);
+        InstantiateWire(bottomLeftCurve, positions[20], 20, newPlug, plugNumber);
+        InstantiateWire(horizontal, positions[21], 21, newPlug, plugNumber);
+        InstantiateWire(bottomRightCurve, positions[22], 22, newPlug, plugNumber);
+        InstantiateWire(topRightCurve, positions[23], 23, newPlug, plugNumber);
+        InstantiateWire(topLeftCurve, positions[24], 24, newPlug, plugNumber);
+        InstantiateWire(vertical, positions[25], 25, newPlug, plugNumber);
+        InstantiateWire(vertical, positions[26], 26, newPlug, plugNumber);
+        InstantiateWire(vertical, positions[27], 27, newPlug, plugNumber);
+        
         Instantiate(newPlug, this.transform);
         return positions.Length - 1;
     }

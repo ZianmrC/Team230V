@@ -42,7 +42,7 @@ public class GeneralSwitches : MonoBehaviour
         manager = GameObject.Find("EventSystem");
         eventManager = manager.GetComponent<EventManager>();
 
-        if (EventManager.TotalGameTime > taskVariables.difficulty1Time)
+        if (EventManager.TotalGameTime > taskVariables.switchDifficulty1Time)
         {
             inputsRequired = 5;
             positions = new Vector2[inputsRequired];

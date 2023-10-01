@@ -10,7 +10,7 @@ public class TaskVariables : ScriptableObject
 
     [Header("SwitchTask")]
     public float maxTime; //The time allocated for all inputs to be inputted correctly before restarting
-    public float difficulty1Time; //The amount of game time passed before the task becomes harder
+    public float switchDifficulty1Time; //The amount of game time passed before the task becomes harder
     public int switchScore; //The amount of score rewarded once completing this task
 
     [Header("PlugTask")]
@@ -18,4 +18,5 @@ public class TaskVariables : ScriptableObject
 
     [Header("WireTask")]
     public int wireScore;
+    public float wireDifficulty1Time; //The amount of game time passed before the task becomes harder
 }

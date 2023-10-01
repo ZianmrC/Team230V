@@ -6705,7 +6705,7 @@ MonoBehaviour:
   electricityText: {fileID: 1955696309}
   scoreText: {fileID: 1713410739}
   damageText: {fileID: 416759822}
-  IncreaseOverload: 0
+  IncreaseOverload: 1
   taskCounterText: {fileID: 1462621611}
   numberOfTasksUntilOverload: 2
   livesIcons:
