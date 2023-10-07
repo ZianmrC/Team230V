@@ -7,6 +7,8 @@ public class TaskVariables : ScriptableObject
     [Header("AnomalySpawner")]
     public float spawnerDifficultyIncrease1;
     public float spawnerDifficultyIncrease2;
+    public float spawnChance1; //The 
+    public float spawnChance2;
 
     [Header("SwitchTask")]
     public float maxTime; //The time allocated for all inputs to be inputted correctly before restarting

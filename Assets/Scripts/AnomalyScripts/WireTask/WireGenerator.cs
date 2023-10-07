@@ -33,17 +33,17 @@ public class WireGenerator : MonoBehaviour
         if(taskVariables.wireDifficulty1Time < EventManager.TotalGameTime)
         {
             plugSockets = new Vector2[4];
-            plugSockets[0] = new Vector2(-600, 150);
-            plugSockets[1] = new Vector2(-200, 150);
-            plugSockets[2] = new Vector2(200, 150);
-            plugSockets[3] = new Vector2(600, 150);
+            plugSockets[0] = new Vector2(-300, 150);
+            plugSockets[1] = new Vector2(-100, 150);
+            plugSockets[2] = new Vector2(100, 150);
+            plugSockets[3] = new Vector2(300, 150);
         }
         else
         {
             plugSockets = new Vector2[3];
-            plugSockets[0] = new Vector2(-400, 150);
+            plugSockets[0] = new Vector2(-300, 150);
             plugSockets[1] = new Vector2(0, 150);
-            plugSockets[2] = new Vector2(400, 150);
+            plugSockets[2] = new Vector2(300, 150);
         }
         Shuffle(plugSockets);
         numberOfWires = Layout1(1, plugSockets[0]) + Layout2(2, plugSockets[1]) + Layout3(3, plugSockets[2]);
@@ -150,7 +150,7 @@ public class WireGenerator : MonoBehaviour
     {
         Vector2 a = startLocation;
         //Instantiate Vector2 Array containing Locations
-        Vector2[] positions = new Vector2[18];
+        Vector2[] positions = new Vector2[20];
         positions[0] = (new Vector2(0, 0) * gridSize) + a; // 'a' is the start location of the particular entangled wire
         positions[1] = (new Vector2(0, -1) * gridSize) + a;
         positions[2] = (new Vector2(0, -2) * gridSize) + a;
@@ -169,6 +169,8 @@ public class WireGenerator : MonoBehaviour
         positions[15] = (new Vector2(1, -4) * gridSize) + a;
         positions[16] = (new Vector2(0, -4) * gridSize) + a;
         positions[17] = (new Vector2(0, -5) * gridSize) + a;
+        positions[18] = (new Vector2(0, -6) * gridSize) + a;
+        positions[19] = (new Vector2(0, -7) * gridSize) + a;
 
         GameObject newPlug = plug;
         RectTransform rect = newPlug.GetComponent<RectTransform>();
@@ -194,6 +196,8 @@ public class WireGenerator : MonoBehaviour
         InstantiateWire(bottomRightCurve, positions[15], 15, newPlug, plugNumber);
         InstantiateWire(topLeftCurve, positions[16], 16, newPlug, plugNumber);
         InstantiateWire(vertical, positions[17], 17, newPlug, plugNumber);
+        InstantiateWire(vertical, positions[18], 18, newPlug, plugNumber);
+        InstantiateWire(vertical, positions[19], 19, newPlug, plugNumber);
         
 
         Instantiate(newPlug, this.transform);

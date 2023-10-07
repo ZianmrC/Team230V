@@ -73,6 +73,7 @@ public class AnamolySpawner : MonoBehaviour
         //Increase Spawn Chances if Anamoly not spawned
         if(EventManager.TotalGameTime > taskVariables.spawnerDifficultyIncrease1 && !difficulty1)
         {
+
             spawnChance += 5;
             maxSpawnTime -= 8;
             difficulty1 = true;

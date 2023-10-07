@@ -15,7 +15,7 @@ MonoBehaviour:
   spawnerDifficultyIncrease1: 45
   spawnerDifficultyIncrease2: 130
   maxTime: 8
-  switchDifficulty1Time: 0
+  switchDifficulty1Time: 50
   switchScore: 5
   plugScore: 5
   wireScore: 5
