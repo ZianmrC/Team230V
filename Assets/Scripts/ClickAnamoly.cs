@@ -48,6 +48,10 @@ public class ClickAnamoly : MonoBehaviour
                         {
                             task.GetComponent<WireGenerator>().taskID = taskNumber;
                         }
+                        else if(task.GetComponent<generalWaterTask>() != null)
+                        {
+                            task.GetComponent<generalWaterTask>().taskID = taskNumber;
+                        }
                         taskNumber = GetComponent<TaskInfo>().taskID;
                         GameObject instantiatedObject = Instantiate(task);
                         instantiatedObject.transform.SetParent(canvas.transform, false);
