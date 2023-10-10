@@ -27,8 +27,12 @@ public class EventManager : MonoBehaviour
     public int numberOfTasksUntilOverload = 2; //The minimum number of tasks present in order to start incrementing the Electricity Overload
     public static int Lives = 3;
     public static int Score;
-
     public GameObject[] livesIcons;
+
+    //Electricity Overload Bar
+    public Slider slider;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,15 +59,17 @@ public class EventManager : MonoBehaviour
             //CountTasks();
             if(taskCounter == 0 && percentage > 0f) //If there are no tasks currently, decrease the overload bar
             {
-                percentage -= 2;
+                if(percentage != 0 && percentage > 2f) { percentage -= 2; }
+                slider.value = percentage;
             }
             else if (taskCounter > 0 && taskCounter >= numberOfTasksUntilOverload && IncreaseOverload)
             {
                 percentage += (taskCounter - 1);
+                slider.value = percentage;
                 //Feedback from Peer Tutor: Maybe pause Overload percentage when currently doing task?
             }
-            electricityText.text = $"Electricity Overload: {percentage}%";
-            scoreText.text = $"Current Score: {Score}";
+            electricityText.text = $"{percentage}%";
+            scoreText.text = $"Score: {Score}";
             updateTimer = 0f;
             //Debug.Log($"Task Counter: {taskCounter}");
         }
