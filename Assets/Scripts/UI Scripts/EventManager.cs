@@ -8,6 +8,8 @@ using System.Threading;
 
 public class EventManager : MonoBehaviour
 {
+    Button leftButton;
+    Button rightButton;
     public TextMeshProUGUI electricityText;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI damageText;
@@ -30,6 +32,12 @@ public class EventManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        leftButton = GameObject.Find("LeftButton").GetComponent<Button>();
+        rightButton = GameObject.Find("RightButton").GetComponent<Button>();
+
+        //leftButton.currentRoom = "Kitchen";
+        //rightButton.currentRoom = "Kitchen";
+
         Score = 0;
         if(damageText != null ) { damageText.enabled = false; }
         TotalGameTime = 0;
@@ -99,6 +107,7 @@ public class EventManager : MonoBehaviour
                 // Perform your action here, for example:
                 // taskInfo.UpdateBoolArray();
                 Destroy(taskObject);
+                Debug.Log($"Deleted {taskObject.name}");
             }
         }
     }

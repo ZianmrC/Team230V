@@ -9,7 +9,7 @@ public class Button : MonoBehaviour
     public GameObject livingroom;
     public GameObject bathroom;
     public GameObject targetRoom;
-    private string currentRoom = "Kitchen";
+    public static string currentRoom = "Kitchen"; //Is Static to share the value with both left and right buttons
     public bool isLeftButton;
 
     EventManager eventManager;
@@ -22,7 +22,7 @@ public class Button : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentRoom = "Kitchen";
+        //currentRoom = "Kitchen";
         eventManager = GameObject.Find("EventSystem").GetComponent<EventManager>();
         if(taskToRemove != null ) //If button is used in Parent Task
         {
@@ -59,19 +59,6 @@ public class Button : MonoBehaviour
             currentRoom = "Livingroom";
             targetRoom = livingroom;
         }
-        else if (isLeftButton && currentRoom == "Bathroom")
-        {
-            gameCamera.Move(livingroom);
-            currentRoom = "Livingroom";
-            targetRoom = livingroom;
-
-        }
-        else if (!isLeftButton && currentRoom == "Bathroom")
-        {
-            gameCamera.Move(kitchen);
-            currentRoom = "Kitchen";
-            targetRoom = kitchen;
-        }
         else if (isLeftButton && currentRoom == "Livingroom")
         {
             gameCamera.Move(kitchen);
@@ -83,6 +70,18 @@ public class Button : MonoBehaviour
             gameCamera.Move(bathroom);
             currentRoom = "Bathroom";
             targetRoom = bathroom;
+        }
+        else if (isLeftButton && currentRoom == "Bathroom")
+        {
+            gameCamera.Move(livingroom);
+            currentRoom = "Livingroom";
+            targetRoom = livingroom;
+        }
+        else if (!isLeftButton && currentRoom == "Bathroom")
+        {
+            gameCamera.Move(kitchen);
+            currentRoom = "Kitchen";
+            targetRoom = kitchen;
         }
         return targetRoom;
     }

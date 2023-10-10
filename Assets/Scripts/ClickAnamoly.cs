@@ -18,6 +18,8 @@ public class ClickAnamoly : MonoBehaviour
         eventManager = GameObject.Find("EventSystem").GetComponent<EventManager>();
         taskInfo = GetComponent<TaskInfo>();
         canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+
+        taskNumber = GetComponent<TaskInfo>().taskID;
     }
     void Update()
     {
@@ -48,7 +50,6 @@ public class ClickAnamoly : MonoBehaviour
                         {
                             task.GetComponent<WireGenerator>().taskID = taskNumber;
                         }
-                        taskNumber = GetComponent<TaskInfo>().taskID;
                         GameObject instantiatedObject = Instantiate(task);
                         instantiatedObject.transform.SetParent(canvas.transform, false);
                         RectTransform instantiatedRT = instantiatedObject.GetComponent<RectTransform>();

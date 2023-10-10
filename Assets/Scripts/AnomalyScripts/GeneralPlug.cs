@@ -147,8 +147,6 @@ public class GeneralPlug : MonoBehaviour
         {
             Instantiate(colorIdentifier[3], positionV2, rotation, parentTransform);
         }
-        Debug.Log(extensionCord1Color);
-        Debug.Log(extensionCord2Color);
     }
 
     private void Update()

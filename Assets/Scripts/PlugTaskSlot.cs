@@ -24,15 +24,13 @@ public class PlugTaskSlot : MonoBehaviour, IDropHandler
             if (!string.Equals(plugInfo.color, color, StringComparison.OrdinalIgnoreCase))
             {
                 dragdrop.InvalidPosition(eventData);
-                Debug.Log(dragdrop.spawnPosition);
-                Debug.Log($"Plug info color: {plugInfo}, color: {color}");
-                Debug.Log("Incorrect!");
+                //Debug.Log("Incorrect!");
             }
             else
             {
                 //eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
                 eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = spawnPosition; //Set plug to plug socket's position
-                Debug.Log($"Correct! Anchored Position: {GetComponent<RectTransform>().anchoredPosition.x}, {GetComponent<RectTransform>().anchoredPosition.y}");
+                //Debug.Log($"Correct! Anchored Position: {GetComponent<RectTransform>().anchoredPosition.x}, {GetComponent<RectTransform>().anchoredPosition.y}");
                 GeneralPlug.numberOfCorrectPlaces++;
                 Destroy(dragdrop); 
                 Destroy(this.gameObject);

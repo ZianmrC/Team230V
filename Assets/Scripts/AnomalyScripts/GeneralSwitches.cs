@@ -8,12 +8,12 @@ using System;
 
 public class GeneralSwitches : MonoBehaviour
 {
-    private GameObject manager;
     private TaskInfo taskInfo;
-    [HideInInspector] public int taskID;
+    public int taskID;
     EventManager eventManager;
     private int inputsRequired;
-    private TextMeshProUGUI timerText;
+    public GameObject timerTextObject;
+    private Text timerText;
 
     private int[] inputs;
     private bool waiting;
@@ -37,10 +37,10 @@ public class GeneralSwitches : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log($"TaskID: {taskID}");
         timer = taskVariables.maxTime;
         helpText.enabled = false;
-        manager = GameObject.Find("EventSystem");
-        eventManager = manager.GetComponent<EventManager>();
+        eventManager = GameObject.Find("EventSystem").GetComponent<EventManager>();
 
         if (EventManager.TotalGameTime > taskVariables.switchDifficulty1Time)
         {
@@ -93,9 +93,7 @@ public class GeneralSwitches : MonoBehaviour
             int index = inputs[i];
             InstantiateImage(positions[i], inputImageArray[index]);
         }
-        Debug.Log($"Switch Task: {positions[0]}, {positions[1]}, {positions[2]}, {positions[3]}");
-        Transform child = transform.Find("TaskTimerText");
-        timerText = child.GetComponent<TextMeshProUGUI>();
+        timerText = timerTextObject.GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -157,6 +155,7 @@ public class GeneralSwitches : MonoBehaviour
                 bool hasOne = correctSequence.Any(item => item == 1);
                 if(allTrue)
                 {
+                    Debug.Log(taskID);
                     eventManager.ChecksTasksForID(taskID);
                     eventManager.UpdateBoolArrayGivenID(taskID);
                     eventManager.AddScore(taskVariables.switchScore);
