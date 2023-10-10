@@ -13,6 +13,8 @@ public class AnamolySpawner : MonoBehaviour
     public GameObject SwitchTask;
     public GameObject PlugTask;
     public GameObject BrokenToasterTask;
+    public GameObject WaterTask;
+
     public GameObject WireTask;
     public GameObject BRTask; //Bathroom Task
     public GameObject ParentTask; //Parent Task
@@ -136,6 +138,9 @@ public class AnamolySpawner : MonoBehaviour
             else if (randomLocation < 9)
             {
                 InstantiateAnomaly(PlugTask, anomalyLocations[randomLocation], randomLocation);
+            }else if (randomLocation < 9)
+            {
+                InstantiateAnomaly(WaterTask, anomalyLocations[randomLocation], randomLocation);
             }
         }
     }
