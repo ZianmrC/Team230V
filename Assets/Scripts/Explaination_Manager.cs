@@ -36,29 +36,33 @@ public class Explaination_Manager : MonoBehaviour
             }
             else if (counter == 1)
             {
-                text.text = "Your house is under attack by an electric ghost! But don’t worry, i’m here to help you how to be safe!";
+                text.text = "Your house is under attack by an electric ghost! But don’t worry," +
+                    "<br> i’m here to help you how to be safe!";
                 counter++;
             }
             else if (counter == 2)
             {
-                text.text = "First of all, we need to look for electrical hazards, like this one!";
+                text.text = "First of all, we need to look for electrical hazards, " +
+                    "<br>like this one!";
                 Hazard.SetActive(true);
                 counter++;
             }
             else if (counter == 3)
             {
-                text.text = "Solving them will give you safety points, and also stops the electricity from overloading!";
+                text.text = "Solving them will give you safety points, and also stops the " +
+                    "<br>electricity from overloading!";
                 Hazard.SetActive(false);
                 counter++;
             }
             else if (counter == 4)
             {
-                text.text = "The counter on the top shows how many hazards are present Throughout the house!";
+                text.text = "The counter on the top shows how many hazards are present " +
+                    "<br>Throughout the house!";
                 counter++;
             }
             else if (counter == 5)
             {
-                text.text = "And finally, some hazards are very dangerous, so make sure to call a parent by dragging them on it! ";
+                text.text = "And finally, some hazards are very dangerous, so make sure to call <br>a parent by dragging them on it! ";
                 counter++;
             }
             else if (counter == 6)
