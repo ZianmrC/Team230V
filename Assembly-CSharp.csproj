@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Ron&apos;s Stuff\QuickOutline\Scripts\Outline.cs" />
+    <Compile Include="Assets\Scripts\TaskScripts\WaterTask.cs" />
     <Compile Include="Assets\Scripts\MeshInvisible.cs" />
     <Compile Include="Assets\Scripts\Button.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\Standard Assets\Utility\DynamicShadowSettings.cs" />
@@ -70,9 +71,10 @@
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\Utils\MaterialFactory.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\Components\ScreenSpaceReflectionComponent.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\Standard Assets\Utility\TimedObjectActivator.cs" />
+    <Compile Include="Assets\Scripts\TaskScripts\generalWaterTask.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\PostProcessingProfile.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\Standard Assets\Utility\CameraRefocus.cs" />
-    <Compile Include="Assets\Scripts\AnomalyScripts\TaskVariables.cs" />
+    <Compile Include="Assets\Scripts\TaskScripts\TaskVariables.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\Standard Assets\CrossPlatformInput\Scripts\TouchPad.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\Standard Assets\CrossPlatformInput\Scripts\Joystick.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\PostProcessingContext.cs" />
@@ -84,18 +86,19 @@
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\Standard Assets\Characters\FirstPersonCharacter\Scripts\MouseLook.cs" />
     <Compile Include="Assets\Scripts\ObjectSelection.cs" />
     <Compile Include="Assets\Scripts\GameCamera.cs" />
-    <Compile Include="Assets\Scripts\AnomalyScripts\ParentTask.cs" />
-    <Compile Include="Assets\Scripts\AnomalyScripts\PlugInfo.cs" />
+    <Compile Include="Assets\Scripts\TaskScripts\ParentTask.cs" />
+    <Compile Include="Assets\Scripts\TaskScripts\PlugInfo.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\Standard Assets\Characters\FirstPersonCharacter\Scripts\RigidbodyFirstPersonController.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\Components\DitheringComponent.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\PostProcessingComponent.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\Standard Assets\Utility\AutoMoveAndRotate.cs" />
-    <Compile Include="Assets\Scripts\AnomalyScripts\WireTask\WireGenerator.cs" />
+    <Compile Include="Assets\Ron&apos;s Stuff\NewBehaviourScript.cs" />
+    <Compile Include="Assets\Scripts\TaskScripts\WireTask\WireGenerator.cs" />
     <Compile Include="Assets\Scripts\ClickAnamoly.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\Components\ColorGradingComponent.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\Standard Assets\CrossPlatformInput\Scripts\PlatformSpecific\MobileInput.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\Models\BloomModel.cs" />
-    <Compile Include="Assets\Scripts\AnomalyScripts\GeneralSwitches.cs" />
+    <Compile Include="Assets\Scripts\TaskScripts\GeneralSwitches.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\Attributes\TrackballAttribute.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\DragAndDropUI.cs" />
     <Compile Include="Assets\Scripts\AnamolySpawner.cs" />
@@ -128,15 +131,16 @@
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\Standard Assets\Utility\WaypointCircuit.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\Standard Assets\Utility\TimedObjectDestructor.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\Components\GrainComponent.cs" />
-    <Compile Include="Assets\Scripts\AnomalyScripts\MopTask.cs" />
+    <Compile Include="Assets\Scripts\TaskScripts\MopTask.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\Models\UserLutModel.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\Standard Assets\Utility\WaypointProgressTracker.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\Models\MotionBlurModel.cs" />
-    <Compile Include="Assets\Scripts\AnomalyScripts\WireTask\WireTaskDragPlug.cs" />
+    <Compile Include="Assets\Scripts\TaskScripts\WireTask\WireTaskDragPlug.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\Standard Assets\Utility\DragRigidbody.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\Standard Assets\CrossPlatformInput\Scripts\PlatformSpecific\StandaloneInput.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\Components\UserLutComponent.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\Standard Assets\Utility\FollowTarget.cs" />
+    <Compile Include="Assets\Scripts\TaskScripts\SinkTask\SinkTask.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\Standard Assets\Utility\ParticleSystemDestroyer.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\Standard Assets\Utility\ObjectResetter.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\Standard Assets\Utility\AutoMobileShaderSwitch.cs" />
@@ -146,8 +150,8 @@
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\Models\BuiltinDebugViewsModel.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\Standard Assets\Utility\FOVKick.cs" />
     <Compile Include="Assets\Scripts\TextOnHover.cs" />
-    <Compile Include="Assets\Scripts\AnomalyScripts\WireTask\WireInfo.cs" />
-    <Compile Include="Assets\Scripts\AnomalyScripts\GeneralPlug.cs" />
+    <Compile Include="Assets\Scripts\TaskScripts\WireTask\WireInfo.cs" />
+    <Compile Include="Assets\Scripts\TaskScripts\GeneralPlug.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\Components\EyeAdaptationComponent.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\Models\ChromaticAberrationModel.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\Models\ColorGradingModel.cs" />
@@ -165,8 +169,9 @@
     <Compile Include="Assets\Scripts\Parent.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\Standard Assets\CrossPlatformInput\Scripts\AxisTouchButton.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\Models\AntialiasingModel.cs" />
-    <Compile Include="Assets\Scripts\AnomalyScripts\BrokenToasterTask.cs" />
+    <Compile Include="Assets\Scripts\TaskScripts\BrokenToasterTask.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\Models\DitheringModel.cs" />
+    <Compile Include="Assets\Scripts\TaskScripts\SinkTask\TapDraggable.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -862,9 +867,6 @@
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.ProBuilder.AddOns.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
@@ -876,6 +878,9 @@
     </Reference>
     <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Model">
       <HintPath>Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Sysroot.Linux_x86_64">
+      <HintPath>Library\ScriptAssemblies\Unity.Sysroot.Linux_x86_64.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
       <HintPath>Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
@@ -891,6 +896,9 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProBuilder.AddOns.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ProBuilder">
       <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.dll</HintPath>
@@ -928,6 +936,9 @@
     <Reference Include="Unity.VisualScripting.Shared.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Toolchain.Win-x86_64-Linux-x86_64">
+      <HintPath>Library\ScriptAssemblies\Unity.Toolchain.Win-x86_64-Linux-x86_64.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
     </Reference>
@@ -936,6 +947,9 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.State">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.SysrootPackage.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.SysrootPackage.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
