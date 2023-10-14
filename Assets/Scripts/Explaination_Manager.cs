@@ -9,6 +9,7 @@ public class Explaination_Manager : MonoBehaviour
     public GameObject ArrowExpl;
     public TextMeshProUGUI text;
     public GameObject Hazard;
+    public GameObject Hazard2;
     public string sceneToSwitchTo;
     private int counter = 0;
 
@@ -21,6 +22,7 @@ public class Explaination_Manager : MonoBehaviour
     {
         ArrowExpl.SetActive(true);
         Hazard.SetActive(false);
+        Hazard2.SetActive(false);
         counter = 0;
         text.text = "Hey there! I’m Todd, a fellow safety hero!";
     }
@@ -45,6 +47,7 @@ public class Explaination_Manager : MonoBehaviour
                 text.text = "First of all, we need to look for electrical hazards, " +
                     "<br>like this one!";
                 Hazard.SetActive(true);
+                Hazard2.SetActive(true);
                 counter++;
             }
             else if (counter == 3)
@@ -52,6 +55,7 @@ public class Explaination_Manager : MonoBehaviour
                 text.text = "Solving them will give you safety points, and also stops the " +
                     "<br>electricity from overloading!";
                 Hazard.SetActive(false);
+                Hazard2.SetActive(false);
                 counter++;
             }
             else if (counter == 4)
