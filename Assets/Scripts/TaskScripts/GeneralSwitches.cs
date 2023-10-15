@@ -37,7 +37,6 @@ public class GeneralSwitches : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log($"TaskID: {taskID}");
         timer = taskVariables.maxTime;
         helpText.enabled = false;
         eventManager = GameObject.Find("EventSystem").GetComponent<EventManager>();

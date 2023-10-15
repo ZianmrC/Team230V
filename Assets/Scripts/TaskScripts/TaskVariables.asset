@@ -14,9 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnerDifficultyIncrease1: 45
   spawnerDifficultyIncrease2: 130
+  spawnChance1: 0
+  spawnChance2: 0
   maxTime: 8
   switchDifficulty1Time: 50
   switchScore: 5
-  plugScore: 5
+  plugScore: 10
   wireScore: 5
   wireDifficulty1Time: 120
+  sinkScore: 5

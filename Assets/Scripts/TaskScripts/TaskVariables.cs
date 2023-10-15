@@ -21,4 +21,7 @@ public class TaskVariables : ScriptableObject
     [Header("WireTask")]
     public int wireScore;
     public float wireDifficulty1Time; //The amount of game time passed before the task becomes harder
+
+    [Header("SinkTask")]
+    public int sinkScore;
 }

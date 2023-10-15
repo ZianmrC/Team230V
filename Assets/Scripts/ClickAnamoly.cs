@@ -18,6 +18,7 @@ public class ClickAnamoly : MonoBehaviour
         eventManager = GameObject.Find("EventSystem").GetComponent<EventManager>();
         taskInfo = GetComponent<TaskInfo>();
         canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+
     }
     void Update()
     {
@@ -25,7 +26,7 @@ public class ClickAnamoly : MonoBehaviour
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-
+            taskNumber = GetComponent<TaskInfo>().taskID;
             if (Physics.Raycast(ray, out hit))
             {
                 if (hit.collider.gameObject == gameObject)
@@ -51,6 +52,10 @@ public class ClickAnamoly : MonoBehaviour
                         else if(task.GetComponent<generalWaterTask>() != null)
                         {
                             task.GetComponent<generalWaterTask>().taskID = taskNumber;
+                        }
+                        else if(task.GetComponent<SinkTask>() != null)
+                        {
+                            task.GetComponent<SinkTask>().taskID = taskNumber;
                         }
                         taskNumber = GetComponent<TaskInfo>().taskID;
                         GameObject instantiatedObject = Instantiate(task);

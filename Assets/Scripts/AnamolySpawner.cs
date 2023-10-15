@@ -14,13 +14,13 @@ public class AnamolySpawner : MonoBehaviour
     public GameObject PlugTask;
     public GameObject BrokenToasterTask;
     public GameObject WaterTask;
-
     public GameObject WireTask;
+    public GameObject SinkTask;
     public GameObject BRTask; //Bathroom Task
     public GameObject ParentTask; //Parent Task
 
     public float maxSpawnTime; //Gurantees to spawn an anamoly if one hasn't spawned after a particular amount of time
-    public float percentageIncrementInterval;
+    public float percentageInterval;
     public float percentageIncrement; //Used to increase the chances of spawning at every interval
     public float spawnChance = 10f;
     private float originalChance;
@@ -31,6 +31,8 @@ public class AnamolySpawner : MonoBehaviour
     private GameObject e;
     EventManager eventManager;
     public TaskVariables taskVariables;
+
+    [Header("For Editting purposes")] public bool pauseSpawning;
     // Start is called before the first frame update
     void Start()
     {
@@ -52,7 +54,7 @@ public class AnamolySpawner : MonoBehaviour
     {
         //Spawning Anamoly
         timeSinceLastSpawn += Time.deltaTime;
-        if (timeSinceLastSpawn > percentageIncrementInterval) //Chance to Spawn anamoly after number of seconds
+        if (timeSinceLastSpawn > percentageInterval && !pauseSpawning) //Chance to Spawn anamoly after number of seconds
         {
             float randomFloat = Random.Range(0.0f, 100f);
             //Debug.Log($"Random Float: {randomFloat}, spawnChance: {spawnChance}");
@@ -114,33 +116,41 @@ public class AnamolySpawner : MonoBehaviour
         if (occupiedAnomalyLocations[randomLocation] == false)
         {
             occupiedAnomalyLocations[randomLocation] = true; //Signify that task is already at spawn location
-            if(randomLocation == 0)
+            if(randomLocation == 0) //Switches
+            {
+                InstantiateAnomaly(SwitchTask, anomalyLocations[randomLocation], randomLocation);
+            }
+            else if(randomLocation == 1) //Sink
+            {
+                InstantiateAnomaly(SinkTask, anomalyLocations[randomLocation], randomLocation);
+            }
+            else if(randomLocation == 2) //Toaster
             {
                 InstantiateAnomaly(BrokenToasterTask, anomalyLocations[randomLocation], randomLocation);
             }
-            else if (randomLocation < 3)
-            {
-                //InstantiateAnomaly(ParentTask, anomalyLocations[randomLocation], randomLocation); Causes Errors
-                InstantiateAnomaly(SwitchTask, anomalyLocations[randomLocation], randomLocation);
-            }
-            else if(randomLocation == 5)
-            {
-                InstantiateAnomaly(PlugTask, anomalyLocations[randomLocation], randomLocation);
-            }
-            else if (randomLocation < 6)
+            else if(randomLocation == 3) //Switches
             {
                 InstantiateAnomaly(SwitchTask, anomalyLocations[randomLocation], randomLocation);
             }
-            else if (randomLocation == 6)
+            else if(randomLocation == 4) //Electrical Bulb (NEED TO MAKE BULB TASK)
+            {
+                InstantiateAnomaly(SwitchTask, anomalyLocations[randomLocation], randomLocation);
+            }
+            else if(randomLocation == 5) //Wire
             {
                 InstantiateAnomaly(WireTask, anomalyLocations[randomLocation], randomLocation);
             }
-            else if (randomLocation < 9)
-            {
-                InstantiateAnomaly(PlugTask, anomalyLocations[randomLocation], randomLocation);
-            }else if (randomLocation < 9)
+            else if (randomLocation == 6) //Water
             {
                 InstantiateAnomaly(WaterTask, anomalyLocations[randomLocation], randomLocation);
+            }
+            else if (randomLocation == 7) //Plug
+            {
+                InstantiateAnomaly(WaterTask, anomalyLocations[randomLocation], randomLocation);
+            }
+            else if (randomLocation == 8) //Bathtub (NEED TO MAKE BATHTUB TASK)
+            {
+                InstantiateAnomaly(PlugTask, anomalyLocations[randomLocation], randomLocation);
             }
         }
     }
@@ -148,9 +158,5 @@ public class AnamolySpawner : MonoBehaviour
     {
         anomaly.GetComponent<TaskInfo>().taskID = taskID;
         Instantiate(anomaly, location);
-    }
-    public void DecreaseOverload(int decrement)
-    {
-
     }
 }

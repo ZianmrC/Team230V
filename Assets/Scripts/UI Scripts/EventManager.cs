@@ -32,10 +32,21 @@ public class EventManager : MonoBehaviour
     //Electricity Overload Bar
     public Slider slider;
 
+    //Upon taking Damage, make Mascot appear and provide tooltip
+    private Vector2 originPosition;
+    private Vector2 endPosition;
+    public GameObject Mascot;
+    private RectTransform rect;
+    private float moveSpeed = 500f;
 
     // Start is called before the first frame update
     void Start()
     {
+        originPosition = new Vector2(-1428, -243);
+        endPosition = new Vector2(-682, -243);
+        rect = Mascot.GetComponent<RectTransform>();
+        rect.anchoredPosition = originPosition;
+
         leftButton = GameObject.Find("LeftButton").GetComponent<Button>();
         rightButton = GameObject.Find("RightButton").GetComponent<Button>();
 
@@ -69,7 +80,7 @@ public class EventManager : MonoBehaviour
                 //Feedback from Peer Tutor: Maybe pause Overload percentage when currently doing task?
             }
             electricityText.text = $"{percentage}%";
-            scoreText.text = $"Score: {Score}";
+            scoreText.text = $"{Score}";
             updateTimer = 0f;
             //Debug.Log($"Task Counter: {taskCounter}");
         }
@@ -79,15 +90,35 @@ public class EventManager : MonoBehaviour
         }
         if(tookDamage)
         {
-            damageTimer += Time.deltaTime;
-            if(damageTimer > 5f)
+            if (rect.anchoredPosition.x < endPosition.x)
             {
-                damageText.enabled = false;
-                tookDamage = false;
+                float newX = rect.anchoredPosition.x + moveSpeed * Time.deltaTime;
+                rect.anchoredPosition = new Vector2(newX, rect.anchoredPosition.y);
+            }
+            else
+            {
+                damageText.enabled = true;
+                damageText.text = "Oh no! You lost a life. Be careful next time, when dealing with \nscary hazards! Maybe let the grown ups deal with them?";
+                damageTimer += Time.deltaTime;
+                IncreaseOverload = false; //Pause overload increase to let player read text
+                if (damageTimer > 6f)
+                {
+                    damageText.enabled = false;
+                    tookDamage = false;
+                    IncreaseOverload = true; //Resume overload increase
+                    rect.anchoredPosition = originPosition;
+                }
             }
         }
+    }   
+    public void DecreaseOverload(int decrement) 
+    { 
+        percentage -= decrement;
+        if(percentage < 0)
+        {
+            percentage = 0; //Ensure percentage never goes negative
+        }
     }
-    public void DecreaseOverload(int decrement) { percentage -= decrement; }
     public void CountTasks()
     {
         GameObject[] taskObjects = GameObject.FindGameObjectsWithTag("Task");
@@ -113,15 +144,17 @@ public class EventManager : MonoBehaviour
                 // Perform your action here, for example:
                 // taskInfo.UpdateBoolArray();
                 Destroy(taskObject);
-                Debug.Log($"Deleted {taskObject.name}");
             }
         }
     }
     public void UpdateBoolArrayGivenID(int ID)
     {
-        AnamolySpawner.occupiedAnomalyLocations[ID] = false;
-        AnamolySpawner.availableSpots.Add(ID);
-
+        if(ID != null)
+        {
+            AnamolySpawner.occupiedAnomalyLocations[ID] = false;
+            AnamolySpawner.availableSpots.Add(ID);
+        }
+        else { Debug.Log("ID given was null."); }
     }
     public void AddScore(int score) { EventManager.Score += score; EventManager.menuOpened = false; }
     public void LoseLife()
