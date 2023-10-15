@@ -171,9 +171,9 @@ MonoBehaviour:
   BRTask: {fileID: 7663906632374380942, guid: a25e78639185c134584cffc877465ea9, type: 3}
   ParentTask: {fileID: 2968953709381042183, guid: e4d405c71795f7b459db48566e167e2a, type: 3}
   maxSpawnTime: 20
-  percentageInterval: 0.5
+  percentageInterval: 2
   percentageIncrement: 2
-  spawnChance: 55
+  spawnChance: 15
   taskVariables: {fileID: 11400000, guid: c7eec3dca3601a646a85ee318e450124, type: 2}
   pauseSpawning: 0
 --- !u!4 &9006522
