@@ -428,7 +428,7 @@ GameObject:
   - component: {fileID: 3867422516503696264}
   - component: {fileID: 7975173965717410838}
   - component: {fileID: 6558784634098807716}
-  - component: {fileID: 8287584143637247116}
+  - component: {fileID: 3500060431430606618}
   m_Layer: 5
   m_Name: WaterTask
   m_TagString: Untagged
@@ -497,7 +497,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8287584143637247116
+--- !u!114 &3500060431430606618
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -506,50 +506,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6169618840294405979}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 753a0e2dbbdca5147ad2ca34b36e4e59, type: 3}
+  m_Script: {fileID: 11500000, guid: 91f2a4930819fdb45b427cde0885b56b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageArray:
-  - {fileID: 1806135942828916102, guid: 255bc4403892d204497483e0723c9e81, type: 3}
-  - {fileID: 2712015390252680691, guid: 37312b0232abd9349ad2bde910ca8d65, type: 3}
-  - {fileID: 2527566986234654346, guid: 6b933ec32fc5b2844a1c0593eca2f096, type: 3}
-  - {fileID: 6560964931311822280, guid: e7dfdbf568d869c4e8ba198c6c44c30b, type: 3}
-  taskID: 8
-  text: {fileID: 0}
-  neutralPlug: {fileID: 1754755405223586098, guid: b3af24e82e344d444bb60103fc9961ad, type: 3}
-  topExtensionCord: {fileID: 0}
-  topExtensionCordSpawns:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  plugSlotSpawn1:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  plugSlotSpawn2:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  colorIdentifierSpawns:
-  - {fileID: 0}
-  - {fileID: 0}
-  ExtensionCord1: {fileID: 0}
-  ExtensionCord2: {fileID: 0}
-  colorIdentifier:
-  - {fileID: 1138605116745385093, guid: d601d0317d6ca3a4eabc5113ea776886, type: 3}
-  - {fileID: 6250917509371455229, guid: 0ca1205d636e321449319c640c3d3dfc, type: 3}
-  - {fileID: 840751036539803691, guid: 44f86dece3ab394488d116ddf80763f5, type: 3}
-  - {fileID: 7993623996160059625, guid: 4c082c93661946c4991c404710a79a61, type: 3}
-  plugSlots: {fileID: 2323288949650969736, guid: 90d14fc54eef1254e88c4b436896a15f, type: 3}
-  helpTimer: 10
-  helpText: {fileID: 45151976797569561}
-  taskVariables: {fileID: 11400000, guid: c7eec3dca3601a646a85ee318e450124, type: 2}
+  waterDrop: {fileID: 4635210291662011185, guid: 8c38df1a11281d949b01c2fdd394f575, type: 3}

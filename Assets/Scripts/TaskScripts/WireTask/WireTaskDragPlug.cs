@@ -13,6 +13,8 @@ public class WireTaskDragPlug : MonoBehaviour, IPointerDownHandler, IBeginDragHa
     private CircleCollider2D circleCollider;
     private WireGenerator wireGenerator;
     [HideInInspector] public GameObject wireGeneratorPrefab;
+
+    private Vector2 wirePosition;
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -50,7 +52,7 @@ public class WireTaskDragPlug : MonoBehaviour, IPointerDownHandler, IBeginDragHa
     }
     public void OnDrop(PointerEventData eventData)
     {
-
+        rectTransform.anchoredPosition = wirePosition; //If plug is dropped anywhere else, move the plug to the last deleted wire object
     }
     public void InvalidPosition(PointerEventData eventData)
     {
@@ -82,7 +84,9 @@ public class WireTaskDragPlug : MonoBehaviour, IPointerDownHandler, IBeginDragHa
             Destroy(collision.gameObject);
             currentWireNumber = wireInfo.wireNumber;
             wireGenerator.wireCounter++;
-            Debug.Log(wireGenerator.wireCounter);
+            //Debug.Log(wireGenerator.wireCounter);
+            RectTransform wireTransform = gameObject.GetComponent<RectTransform>();
+            wirePosition = wireTransform.anchoredPosition;
         }
     }
 }

@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8908553220008912896}
   - component: {fileID: 9130766590431316484}
-  - component: {fileID: 3022832955586734254}
   - component: {fileID: 4763497787295188175}
+  - component: {fileID: 3022832955586734254}
   - component: {fileID: -6895334339459027579}
   m_Layer: 0
   m_Name: WaterTask
@@ -48,19 +48,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1.5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3022832955586734254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2968953709381042183}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b63469d0651224142898884f959e9363, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  task: {fileID: 6169618840294405979, guid: 98715f8cfdb80db46882ccdf1a5e04d5, type: 3}
 --- !u!114 &4763497787295188175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,6 +62,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taskTimer: 0
   taskID: 8
+--- !u!114 &3022832955586734254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2968953709381042183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b63469d0651224142898884f959e9363, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  task: {fileID: 6169618840294405979, guid: 98715f8cfdb80db46882ccdf1a5e04d5, type: 3}
 --- !u!212 &-6895334339459027579
 SpriteRenderer:
   m_ObjectHideFlags: 0

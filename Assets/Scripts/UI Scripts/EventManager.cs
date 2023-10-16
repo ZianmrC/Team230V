@@ -12,7 +12,7 @@ public class EventManager : MonoBehaviour
     Button rightButton;
     public TextMeshProUGUI electricityText;
     public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI damageText;
+    public  TextMeshProUGUI damageText;
     private bool tookDamage;
     public bool IncreaseOverload;
     private float damageTimer;
@@ -35,15 +35,15 @@ public class EventManager : MonoBehaviour
     //Upon taking Damage, make Mascot appear and provide tooltip
     private Vector2 originPosition;
     private Vector2 endPosition;
-    public GameObject Mascot;
+    public  GameObject Mascot;
     private RectTransform rect;
-    private float moveSpeed = 500f;
+    public  float moveSpeed = 500f;
 
     // Start is called before the first frame update
     void Start()
     {
-        originPosition = new Vector2(-1428, -243);
-        endPosition = new Vector2(-682, -243);
+        originPosition = new Vector2(-1428, -253);
+        endPosition = new Vector2(-682, -253);
         rect = Mascot.GetComponent<RectTransform>();
         rect.anchoredPosition = originPosition;
 

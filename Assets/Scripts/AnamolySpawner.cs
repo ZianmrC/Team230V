@@ -12,11 +12,14 @@ public class AnamolySpawner : MonoBehaviour
     public static List<int> availableSpots = new List<int>();
     public GameObject SwitchTask;
     public GameObject PlugTask;
-    public GameObject BrokenToasterTask;
+    public GameObject BrokenToasterTask; //(Parent Task)
     public GameObject WaterTask;
     public GameObject WireTask;
     public GameObject SinkTask;
-    public GameObject BRTask; //Bathroom Task
+    public GameObject BulbTask; //(Parent Task)
+    public GameObject BathtubTask; //(Parent Task)
+    public GameObject ElectricalFireTask; //(Parent Task)
+
     public GameObject ParentTask; //Parent Task
 
     public float maxSpawnTime; //Gurantees to spawn an anamoly if one hasn't spawned after a particular amount of time
@@ -140,13 +143,15 @@ public class AnamolySpawner : MonoBehaviour
             {
                 InstantiateAnomaly(WireTask, anomalyLocations[randomLocation], randomLocation);
             }
-            else if (randomLocation == 6) //Water
+            else if (randomLocation == 6) //Water (STOPPED FOR TESTING PURPOSES)
             {
-                InstantiateAnomaly(WaterTask, anomalyLocations[randomLocation], randomLocation);
+                //InstantiateAnomaly(WaterTask, anomalyLocations[randomLocation], randomLocation);
+                SpawnAnamoly();
             }
-            else if (randomLocation == 7) //Plug
+            else if (randomLocation == 7) //Plug (STOPPED FOR TESTING PURPOSES)
             {
-                InstantiateAnomaly(WaterTask, anomalyLocations[randomLocation], randomLocation);
+                //InstantiateAnomaly(WaterTask, anomalyLocations[randomLocation], randomLocation);
+                SpawnAnamoly();
             }
             else if (randomLocation == 8) //Bathtub (NEED TO MAKE BATHTUB TASK)
             {

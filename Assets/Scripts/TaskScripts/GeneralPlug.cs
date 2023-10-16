@@ -166,6 +166,7 @@ public class GeneralPlug : MonoBehaviour
         if(helpTimer < currentTimer)
         {
             helpText.enabled = true;
+            
         }
         text.text = $"Plugs Left: {4 - numberOfCorrectPlaces}";
     }
