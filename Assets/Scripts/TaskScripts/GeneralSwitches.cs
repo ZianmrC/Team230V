@@ -34,6 +34,17 @@ public class GeneralSwitches : MonoBehaviour
     //TaskVariables
     public TaskVariables taskVariables;
 
+    [Header("Tooltip/Mascot Variables")]
+    public GameObject switchMascot;
+    private GameObject textObject;
+    private TextMeshProUGUI tooltipText;
+    private Vector2 originPosition;
+    private Vector2 endPosition;
+    private RectTransform rect;
+    public float moveSpeed = 500f;
+    private bool stopTooltip;
+    private float mascotTimer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -93,6 +104,14 @@ public class GeneralSwitches : MonoBehaviour
             InstantiateImage(positions[i], inputImageArray[index]);
         }
         timerText = timerTextObject.GetComponent<Text>();
+
+        originPosition = new Vector2(-220, -696);
+        endPosition = new Vector2(-220, -404);
+        rect = switchMascot.GetComponent<RectTransform>();
+        rect.anchoredPosition = originPosition;
+        Transform textObject = transform.Find("Mascot/Container/Image/Text (TMP)");
+        tooltipText = textObject.GetComponent<TextMeshProUGUI>();
+        mascotTimer = 0f; stopTooltip = false;
     }
 
     // Update is called once per frame
@@ -176,6 +195,29 @@ public class GeneralSwitches : MonoBehaviour
             {
                 holdingDown = false;
                 waiting = true; // Reset for the next input
+            }
+        }
+        mascotTimer += Time.deltaTime;
+        if(mascotTimer > taskVariables.switchHelpTime)
+        {
+            if (correctSequence[0] == 2)
+            {
+                rect.anchoredPosition = originPosition;
+            }
+            else if (rect.anchoredPosition.y < endPosition.y)
+            {
+                float newY = rect.anchoredPosition.y + moveSpeed * Time.deltaTime;
+                rect.anchoredPosition = new Vector2(rect.anchoredPosition.x, newY);
+            }
+            else if (!stopTooltip)
+            {
+                tooltipText.enabled = true;
+                tooltipText.text = "Having switches on while not in use can be a hazard,\n making them really hot, hot enough for even a fire!\n Use the arrow keys shown to switch these off";
+                if (correctSequence[0] == 2)
+                {
+                    stopTooltip = true;
+                    rect.anchoredPosition = originPosition;
+                }
             }
         }
     }

@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Xml.Serialization;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class WireGenerator : MonoBehaviour
 {
@@ -27,9 +27,22 @@ public class WireGenerator : MonoBehaviour
     //Other Variables
     public float gridSize;
     private Vector2[] plugSockets;
+    private float currentTimer;
+
+    [Header("Tooltip/Mascot Variables")]
+    public GameObject wireMascot;
+    private GameObject textObject;
+    private TextMeshProUGUI text;
+    private Vector2 originPosition;
+    private Vector2 endPosition;
+    private RectTransform rect;
+    public float moveSpeed = 500f;
+    private bool stopTooltip;
 
     private void Awake()
     {
+        originPosition = new Vector2(-220, -696);
+        endPosition = new Vector2(-220, -374);
         if(taskVariables.wireDifficulty1Time < EventManager.TotalGameTime)
         {
             plugSockets = new Vector2[4];
@@ -62,9 +75,15 @@ public class WireGenerator : MonoBehaviour
     }
     private void Start()
     {
-
+        currentTimer = 0f; stopTooltip = false;
         wireCounter = 0;
         eventManager = GameObject.Find("EventSystem").GetComponent<EventManager>();
+
+        rect = wireMascot.GetComponent<RectTransform>();
+        rect.anchoredPosition = originPosition;
+        Transform textObject = transform.Find("Mascot/Container/Image/Text (TMP)");
+        text = textObject.GetComponent<TextMeshProUGUI>();
+
         Debug.Log(numberOfWires);
     }
     private void Update()
@@ -79,6 +98,25 @@ public class WireGenerator : MonoBehaviour
             wireCounter = 0;
             Destroy(this.gameObject);
             awakeCalled = false;
+        }
+        currentTimer += Time.deltaTime;
+        if (currentTimer > taskVariables.wireHelpTime && !stopTooltip)
+        {
+            if (rect.anchoredPosition.y < endPosition.y)
+            {
+                float newY = rect.anchoredPosition.y + moveSpeed * Time.deltaTime;
+                rect.anchoredPosition = new Vector2(rect.anchoredPosition.x, newY);
+            }
+            else if(!stopTooltip)
+            {
+                text.enabled = true;
+                text.text = "The wires seem untangled! Try clicking and \ndragging the plug, tracing the path of the \nwire its connect to.";
+                if(wireCounter >= 5)
+                {
+                    stopTooltip = true;
+                    rect.anchoredPosition = originPosition;
+                }
+            }
         }
     }
     private void InstantiateWire(GameObject wireType, Vector2 position, int wireNumber, GameObject plug, int plugNumber)

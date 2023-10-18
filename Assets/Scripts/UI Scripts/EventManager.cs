@@ -177,3 +177,4 @@ public class EventManager : MonoBehaviour
     }
 
 }
+// Male Audio clip: https://freesound.org/people/pfranzen/sounds/264770/

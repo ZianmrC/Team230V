@@ -119,6 +119,7 @@ public class AnamolySpawner : MonoBehaviour
         if (occupiedAnomalyLocations[randomLocation] == false)
         {
             occupiedAnomalyLocations[randomLocation] = true; //Signify that task is already at spawn location
+            //Kitchen Spawns
             if(randomLocation == 0) //Switches
             {
                 InstantiateAnomaly(SwitchTask, anomalyLocations[randomLocation], randomLocation);
@@ -131,6 +132,7 @@ public class AnamolySpawner : MonoBehaviour
             {
                 InstantiateAnomaly(BrokenToasterTask, anomalyLocations[randomLocation], randomLocation);
             }
+            //LivingRoom Spawns
             else if(randomLocation == 3) //Switches
             {
                 InstantiateAnomaly(SwitchTask, anomalyLocations[randomLocation], randomLocation);
@@ -143,10 +145,11 @@ public class AnamolySpawner : MonoBehaviour
             {
                 InstantiateAnomaly(WireTask, anomalyLocations[randomLocation], randomLocation);
             }
+            //BathRoom Spawns
             else if (randomLocation == 6) //Water (STOPPED FOR TESTING PURPOSES)
             {
-                //InstantiateAnomaly(WaterTask, anomalyLocations[randomLocation], randomLocation);
-                SpawnAnamoly();
+                InstantiateAnomaly(WaterTask, anomalyLocations[randomLocation], randomLocation);
+                //SpawnAnamoly();
             }
             else if (randomLocation == 7) //Plug (STOPPED FOR TESTING PURPOSES)
             {
