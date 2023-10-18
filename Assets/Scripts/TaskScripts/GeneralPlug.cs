@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
-public class GeneralPlug : MonoBehaviour
+public class GeneralPlug : MonoBehaviour, IDropHandler
 {
     public static int numberOfCorrectPlaces = 0;
     EventManager eventManager;
@@ -225,6 +226,18 @@ public class GeneralPlug : MonoBehaviour
         newImageRectTransform.anchoredPosition = position;
         GetComponent<PlugInfo>().color = color;
         return slot;
+    }
+    public void OnDrop(PointerEventData eventData)
+    {
+        if (eventData.pointerDrag != null)
+        {
+            string objectName = eventData.pointerDrag.name;
+
+            if (objectName == "Parent")
+            {
+                eventManager.LoseLife();
+            }
+        }
     }
 }
 

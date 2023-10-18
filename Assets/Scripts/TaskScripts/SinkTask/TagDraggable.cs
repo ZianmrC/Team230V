@@ -28,7 +28,7 @@ public class TagDraggable : MonoBehaviour, IPointerDownHandler, IBeginDragHandle
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
-        originPosition = new Vector2(38, 154);
+        originPosition = new Vector2(38, 106);
 
         eventManager = GameObject.Find("EventSystem").GetComponent<EventManager>();
         RectTransform parentRectTransform = transform.parent.GetComponent<RectTransform>();
