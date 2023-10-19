@@ -14,14 +14,18 @@ public class TaskVariables : ScriptableObject
     public float maxTime; //The time allocated for all inputs to be inputted correctly before restarting
     public float switchDifficulty1Time; //The amount of game time passed before the task becomes harder
     public int switchScore; //The amount of score rewarded once completing this task
+    public float switchHelpTime;
 
     [Header("PlugTask")]
     public int plugScore; //The amount of score rewarded once completing this task
+    public float plugHelpTime; //The amount of time for player to not achieve progress in wire task until Help tip appears
 
     [Header("WireTask")]
     public int wireScore;
     public float wireDifficulty1Time; //The amount of game time passed before the task becomes harder
+    public float wireHelpTime; //The amount of time for player to not achieve progress in wire task until Help tip appears
 
     [Header("SinkTask")]
     public int sinkScore;
+    public float sinkHelpTime;
 }

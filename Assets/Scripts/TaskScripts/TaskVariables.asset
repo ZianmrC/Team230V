@@ -19,7 +19,11 @@ MonoBehaviour:
   maxTime: 8
   switchDifficulty1Time: 50
   switchScore: 5
+  switchHelpTime: 2
   plugScore: 10
+  plugHelpTime: 2
   wireScore: 5
   wireDifficulty1Time: 120
+  wireHelpTime: 2
   sinkScore: 5
+  sinkHelpTime: 2

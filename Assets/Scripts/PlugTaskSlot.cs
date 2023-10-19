@@ -21,7 +21,7 @@ public class PlugTaskSlot : MonoBehaviour, IDropHandler
         {
             PlugInfo plugInfo = eventData.pointerDrag.GetComponent<PlugInfo>();
             DragAndDropUI dragdrop = eventData.pointerDrag.GetComponent<DragAndDropUI>();
-            if (!string.Equals(plugInfo.color, color, StringComparison.OrdinalIgnoreCase))
+            if (!string.Equals(plugInfo.color, color, StringComparison.OrdinalIgnoreCase) && eventData.pointerDrag != null)
             {
                 dragdrop.InvalidPosition(eventData);
                 //Debug.Log("Incorrect!");

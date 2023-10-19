@@ -173,6 +173,7 @@
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\Models\AntialiasingModel.cs" />
     <Compile Include="Assets\Scripts\TaskScripts\BrokenToasterTask.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\Models\DitheringModel.cs" />
+    <Compile Include="Assets\Scripts\UI Scripts\GameOverScore.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
-public class GeneralPlug : MonoBehaviour
+public class GeneralPlug : MonoBehaviour, IDropHandler
 {
     public static int numberOfCorrectPlaces = 0;
     EventManager eventManager;
@@ -46,11 +47,18 @@ public class GeneralPlug : MonoBehaviour
     public TextMeshProUGUI helpText;
 
     public TaskVariables taskVariables;
-
+    [Header("Tooltip/Mascot Variables")]
+    public GameObject wireMascot;
+    private GameObject textObject;
+    private TextMeshProUGUI tooltipText;
+    private Vector2 originPosition;
+    private Vector2 endPosition;
+    private RectTransform rect;
+    public float moveSpeed = 500f;
+    private bool stopTooltip;
 
     private void Start()
     {
-        helpText.enabled = false;
         numberOfCorrectPlaces = 0;
         // ENSURE TO FIX THIS ONCE ACTUAL ASSETS MADE
         // Pick 2 Random Colors
@@ -147,6 +155,13 @@ public class GeneralPlug : MonoBehaviour
         {
             Instantiate(colorIdentifier[3], positionV2, rotation, parentTransform);
         }
+        originPosition = new Vector2(-220, -696);
+        endPosition = new Vector2(-220, -404);
+        rect = wireMascot.GetComponent<RectTransform>();
+        rect.anchoredPosition = originPosition;
+        Transform textObject = transform.Find("Mascot/Container/Image/Text (TMP)");
+        tooltipText = textObject.GetComponent<TextMeshProUGUI>();
+        currentTimer = 0f; stopTooltip = false;
     }
 
     private void Update()
@@ -163,10 +178,24 @@ public class GeneralPlug : MonoBehaviour
             awakeCalled = false;
         }
 
-        if(helpTimer < currentTimer)
+        currentTimer += Time.deltaTime;
+        if (currentTimer > taskVariables.plugHelpTime && !stopTooltip)
         {
-            helpText.enabled = true;
-            
+            if (rect.anchoredPosition.y < endPosition.y)
+            {
+                float newY = rect.anchoredPosition.y + moveSpeed * Time.deltaTime;
+                rect.anchoredPosition = new Vector2(rect.anchoredPosition.x, newY);
+            }
+            else if (!stopTooltip)
+            {
+                tooltipText.enabled = true;
+                tooltipText.text = "Having too many appliances on 1 cord \nis not safe. It's best to move some to another. \nClick and drag the colored plugs to the matching cords.";
+                if (numberOfCorrectPlaces >= 1)
+                {
+                    stopTooltip = true;
+                    rect.anchoredPosition = originPosition;
+                }
+            }
         }
         text.text = $"Plugs Left: {4 - numberOfCorrectPlaces}";
     }
@@ -225,6 +254,18 @@ public class GeneralPlug : MonoBehaviour
         newImageRectTransform.anchoredPosition = position;
         GetComponent<PlugInfo>().color = color;
         return slot;
+    }
+    public void OnDrop(PointerEventData eventData)
+    {
+        if (eventData.pointerDrag != null)
+        {
+            string objectName = eventData.pointerDrag.name;
+
+            if (objectName == "Parent")
+            {
+                eventManager.LoseLife();
+            }
+        }
     }
 }
 
