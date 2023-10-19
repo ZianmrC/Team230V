@@ -462,7 +462,7 @@ GameObject:
   - component: {fileID: 8980365462749319240}
   - component: {fileID: 6718844009099843446}
   m_Layer: 5
-  m_Name: BulpTask
+  m_Name: BulbTask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -28,4 +28,8 @@ public class TaskVariables : ScriptableObject
     [Header("SinkTask")]
     public int sinkScore;
     public float sinkHelpTime;
+
+    [Header("WaterTask")]
+    public int waterScore;
+    public float waterHelpTime;
 }

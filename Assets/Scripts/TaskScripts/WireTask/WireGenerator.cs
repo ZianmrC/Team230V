@@ -38,10 +38,10 @@ public class WireGenerator : MonoBehaviour
     private RectTransform rect;
     public float moveSpeed = 500f;
     private bool stopTooltip;
-
+    private bool spoken;
     private void Awake()
     {
-        originPosition = new Vector2(-220, -696);
+        originPosition = new Vector2(-220, -696); spoken = false;
         endPosition = new Vector2(-220, -374);
         if(taskVariables.wireDifficulty1Time < EventManager.TotalGameTime)
         {
@@ -110,6 +110,11 @@ public class WireGenerator : MonoBehaviour
             else if(!stopTooltip)
             {
                 text.enabled = true;
+                if (spoken == false)
+                {
+                    EventManager.PlayAudioSource("Mumbling");
+                    spoken = true;
+                }
                 text.text = "The wires seem untangled! Try clicking and \ndragging the plug, tracing the path of the \nwire its connect to.";
                 if(wireCounter >= 5)
                 {

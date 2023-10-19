@@ -39,6 +39,18 @@ public class EventManager : MonoBehaviour
     private RectTransform rect;
     public  float moveSpeed = 500f;
 
+    //SFX
+    public GameObject mainCamera;
+    public GameObject Footsteps;
+    public static AudioSource footsteps;
+
+    public GameObject TaskSuccessAudio;
+    public static AudioSource taskSuccessAudio;
+
+    public static AudioSource mascotChatter;
+    public GameObject MascotChatter;
+    private bool spoken;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,10 +65,18 @@ public class EventManager : MonoBehaviour
         //leftButton.currentRoom = "Kitchen";
         //rightButton.currentRoom = "Kitchen";
 
-        Score = 0;
+        Score = 0; spoken = false;
         if(damageText != null ) { damageText.enabled = false; }
         TotalGameTime = 0;
         menuOpened = false;
+        if(mainCamera != null )
+        {
+            footsteps = Footsteps.GetComponent<AudioSource>();
+            taskSuccessAudio = TaskSuccessAudio.GetComponent<AudioSource>();
+            mascotChatter = MascotChatter.GetComponent<AudioSource>();
+
+            footsteps.volume = 0f; taskSuccessAudio.volume = 0f; mascotChatter.volume = 0f;
+        }
     }
 
     // Update is called once per frame
@@ -97,6 +117,11 @@ public class EventManager : MonoBehaviour
             }
             else
             {
+                if (spoken == false)
+                {
+                    PlayAudioSource("Mumbling");
+                    spoken = true;
+                }
                 damageText.enabled = true;
                 damageText.text = "Oh no! You lost a life. Be careful next time, when dealing with \nscary hazards! Maybe let the grown ups deal with them?";
                 damageTimer += Time.deltaTime;
@@ -156,7 +181,11 @@ public class EventManager : MonoBehaviour
         }
         else { Debug.Log("ID given was null."); }
     }
-    public void AddScore(int score) { EventManager.Score += score; EventManager.menuOpened = false; }
+    public void AddScore(int score) { 
+        EventManager.Score += score; 
+        EventManager.menuOpened = false; 
+        PlayAudioSource("TaskSuccess"); 
+    }
     public void LoseLife()
     {
         Lives--;
@@ -175,6 +204,32 @@ public class EventManager : MonoBehaviour
         damageText.enabled = true;
         tookDamage = true;
     }
+    public static void PlayAudioSource(string sfx)
+    {
+        if(sfx == "Footsteps")
+        {
+            footsteps.volume = 1f;
+            footsteps.enabled = true;
+            footsteps.Play();
+        }
+        else if(sfx == "TaskSuccess")
+        {
+            taskSuccessAudio.volume = 1f;
+            taskSuccessAudio.enabled = true;
+            taskSuccessAudio.Play();
+        }
+        else if(sfx == "Mumbling")
+        {
+            mascotChatter.volume = 1f;
+            mascotChatter.enabled = true;
+            mascotChatter.Play();
+        }
+        else { Debug.Log($"Could not recognize the desired input '{sfx}'."); }
+    }
 
 }
 // Male Audio clip: https://freesound.org/people/pfranzen/sounds/264770/
+// Fire GIF: https://tenor.com/view/fire-gif-23339431
+// Water tap Image: https://www.vecteezy.com/vector-art/13330055-water-tap-faucet-icon-vector-design-template
+// Bathtub PNG: https://www.cleanpng.com/png-kitchen-sink-tap-bathroom-bathtub-top-view-5273859/download-png.html
+// Hair Dryer PNG: https://pixabay.com/vectors/dryer-hair-hairdresser-1293118/
