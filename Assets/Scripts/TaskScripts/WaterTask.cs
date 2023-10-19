@@ -21,17 +21,12 @@ public class WaterTask : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoin
     private GameObject[] water;
 
     private bool start = false;
+    
     void Start()
     {
+        canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
         Debug.Log("we are starting");
-        for (int i = 0; i < 100; i++)
-        {
-            Vector3 spawnPosition = new Vector3(Random.Range(-xRange, xRange), Random.Range(-yRange, yRange), 0.0f);
-            GameObject waterDropInstance = Instantiate(waterDrop, this.transform);
-            waterDropInstance.transform.SetParent(canvas.transform, false);
-            RectTransform rectTransform = waterDropInstance.GetComponent<RectTransform>();
-            rectTransform.anchoredPosition = spawnPosition;
-        }
+        
     }
      private void OnCollisionEnter2D(Collision2D collision)
         {
@@ -70,8 +65,8 @@ public class WaterTask : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoin
             if (RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform, eventData.position, eventData.pressEventCamera, out localPointerPosition))
             {
                 Vector3 offsetToOriginal = localPointerPosition - originalLocalPointerPosition;
-                rectTransform.localPosition = offsetToOriginal;
-                
+                rectTransform.localPosition = offsetToOriginal*2;
+
                     
             }
         }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4763497787295188175}
   - component: {fileID: -6895334339459027579}
   m_Layer: 0
-  m_Name: SinkTask
+  m_Name: FireTask
   m_TagString: Task
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b63469d0651224142898884f959e9363, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  task: {fileID: 685525800183486769, guid: b4886418916588443b24ff84cc11dc77, type: 3}
+  task: {fileID: 8080908104498722314, guid: a2ada8f819795e443a9fffedfbd2843c, type: 3}
 --- !u!114 &4763497787295188175
 MonoBehaviour:
   m_ObjectHideFlags: 0
