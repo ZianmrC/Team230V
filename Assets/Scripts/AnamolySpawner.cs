@@ -34,6 +34,7 @@ public class AnamolySpawner : MonoBehaviour
     private GameObject e;
     EventManager eventManager;
     public TaskVariables taskVariables;
+    public bool playGame = true;
 
     [Header("For Editting purposes")] public bool pauseSpawning;
     // Start is called before the first frame update
@@ -51,30 +52,37 @@ public class AnamolySpawner : MonoBehaviour
 
 
     }
-
+    public void pauseGame(){
+        playGame = false;
+    }
+    public void continueGame(){
+        playGame = true;
+    }
     // Update is called once per frame
     void Update()
     {
-        //Spawning Anamoly
-        timeSinceLastSpawn += Time.deltaTime;
-        if (timeSinceLastSpawn > percentageInterval && !pauseSpawning) //Chance to Spawn anamoly after number of seconds
-        {
-            float randomFloat = Random.Range(0.0f, 100f);
-            //Debug.Log($"Random Float: {randomFloat}, spawnChance: {spawnChance}");
-            if(timeSinceLastSpawn >= maxSpawnTime) //100% to spawn anomaly after given time
+        if(playGame){
+            //Spawning Anamoly
+            timeSinceLastSpawn += Time.deltaTime;
+            if (timeSinceLastSpawn > percentageInterval && !pauseSpawning) //Chance to Spawn anamoly after number of seconds
             {
-                SpawnAnamoly();
+                float randomFloat = Random.Range(0.0f, 100f);
+                //Debug.Log($"Random Float: {randomFloat}, spawnChance: {spawnChance}");
+                if(timeSinceLastSpawn >= maxSpawnTime) //100% to spawn anomaly after given time
+                {
+                    SpawnAnamoly();
+                }
+                else if (randomFloat < spawnChance)
+                {
+                    SpawnAnamoly();
+                    spawnChance = originalChance;
+                }
+                else
+                {
+                    spawnChance += percentageIncrement;
+                }
+                timeSinceLastSpawn = 0f;
             }
-            else if (randomFloat < spawnChance)
-            {
-                SpawnAnamoly();
-                spawnChance = originalChance;
-            }
-            else
-            {
-                spawnChance += percentageIncrement;
-            }
-            timeSinceLastSpawn = 0f;
         }
 
         //Increase Spawn Chances if Anamoly not spawned

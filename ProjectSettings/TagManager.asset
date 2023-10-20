@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Task
   - Selectable
+  - mop
+  - water
   layers:
   - Default
   - TransparentFX
@@ -13,7 +15,7 @@ TagManager:
   - Front
   - Water
   - UI
-  - 
+  - Pause
   - 
   - 
   - 
