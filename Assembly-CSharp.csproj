@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\UI Scripts\GameStart.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\Utils\MaterialFactory.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\Components\ScreenSpaceReflectionComponent.cs" />
+    <Compile Include="Assets\Scripts\UIBlocker.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\Standard Assets\Utility\TimedObjectActivator.cs" />
     <Compile Include="Assets\Scripts\TaskScripts\generalWaterTask.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\PostProcessingProfile.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\Attributes\MinAttribute.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\Standard Assets\CrossPlatformInput\Scripts\TiltInput.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\Components\BloomComponent.cs" />
+    <Compile Include="Assets\Scripts\Continue.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\Standard Assets\Utility\CurveControlledBob.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\Standard Assets\Characters\FirstPersonCharacter\Scripts\MouseLook.cs" />
     <Compile Include="Assets\Scripts\ObjectSelection.cs" />
@@ -101,6 +103,7 @@
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\Standard Assets\CrossPlatformInput\Scripts\PlatformSpecific\MobileInput.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\Models\BloomModel.cs" />
     <Compile Include="Assets\Scripts\TaskScripts\GeneralSwitches.cs" />
+    <Compile Include="Assets\Scripts\Pause.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\Attributes\TrackballAttribute.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\DragAndDropUI.cs" />
     <Compile Include="Assets\Scripts\AnamolySpawner.cs" />
@@ -120,6 +123,7 @@
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\PostProcessingBehaviour.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\Models\EyeAdaptationModel.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\Utils\GraphicsUtils.cs" />
+    <Compile Include="Assets\Scripts\RandomLightFlash.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\Standard Assets\Utility\SmoothFollow.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\StartScreenTuto.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Utilities\CustomMotionTexture\ExampleWheelController.cs" />
@@ -141,6 +145,7 @@
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\Standard Assets\Utility\DragRigidbody.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\Standard Assets\CrossPlatformInput\Scripts\PlatformSpecific\StandaloneInput.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\Components\UserLutComponent.cs" />
+    <Compile Include="Assets\Scripts\SceneSwitcher.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\Standard Assets\Utility\FollowTarget.cs" />
     <Compile Include="Assets\Scripts\TaskScripts\SinkTask\SinkTask.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\GameOverScore.cs" />
@@ -174,7 +179,6 @@
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\Models\AntialiasingModel.cs" />
     <Compile Include="Assets\Scripts\TaskScripts\BrokenToasterTask.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\Models\DitheringModel.cs" />
-    <Compile Include="Assets\Scripts\RandomLightFlash.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

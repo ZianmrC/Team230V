@@ -145,7 +145,7 @@ public class AnamolySpawner : MonoBehaviour
             {
                 InstantiateAnomaly(ElectricalFireTask, anomalyLocations[randomLocation], randomLocation);
             }
-            else if(randomLocation == 4) //Electrical Bulb (NEED TO MAKE BULB TASK)
+            else if(randomLocation == 4) //Electrical Bulb
             {
                 InstantiateAnomaly(BulbTask, anomalyLocations[randomLocation], randomLocation);
             }
@@ -154,19 +154,17 @@ public class AnamolySpawner : MonoBehaviour
                 InstantiateAnomaly(WireTask, anomalyLocations[randomLocation], randomLocation);
             }
             //BathRoom Spawns
-            else if (randomLocation == 6) //Water (STOPPED FOR TESTING PURPOSES)
+            else if (randomLocation == 6) //Water
             {
                 InstantiateAnomaly(WaterTask, anomalyLocations[randomLocation], randomLocation);
-                //SpawnAnamoly();
             }
-            else if (randomLocation == 7) //Plug (STOPPED FOR TESTING PURPOSES)
-            {
-                InstantiateAnomaly(WaterTask, anomalyLocations[randomLocation], randomLocation);
-                SpawnAnamoly();
-            }
-            else if (randomLocation == 8) //Bathtub (NEED TO MAKE BATHTUB TASK)
+            else if (randomLocation == 7) //Plug
             {
                 InstantiateAnomaly(PlugTask, anomalyLocations[randomLocation], randomLocation);
+            }
+            else if (randomLocation == 8) //Bathtub
+            {
+                InstantiateAnomaly(BathtubTask, anomalyLocations[randomLocation], randomLocation);
             }
         }
     }
