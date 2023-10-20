@@ -347,7 +347,7 @@ MonoBehaviour:
   ElectricalFireTask: {fileID: 2968953709381042183, guid: b9a2ec95fb2f6f945be6997c14300a7d, type: 3}
   ParentTask: {fileID: 2968953709381042183, guid: e4d405c71795f7b459db48566e167e2a, type: 3}
   maxSpawnTime: 20
-  percentageInterval: 0.1
+  percentageInterval: 10
   percentageIncrement: 5
   spawnChance: 50
   taskVariables: {fileID: 11400000, guid: c7eec3dca3601a646a85ee318e450124, type: 2}

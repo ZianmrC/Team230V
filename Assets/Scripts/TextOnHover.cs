@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class TextOnHover : MonoBehaviour
 {
@@ -17,13 +18,21 @@ public class TextOnHover : MonoBehaviour
 
     public void OnMouseOver()
     {
-        HoverText.SetActive(true);
-        BGpanel.SetActive(true);
+        if (!IsMouseOnUI())
+        {
+            HoverText.SetActive(true);
+            BGpanel.SetActive(true);
+        }
     }
 
     public void OnMouseExit()
     {
         HoverText.SetActive(false);
         BGpanel.SetActive(false);
+    }
+
+    private bool IsMouseOnUI()
+    {
+        return EventSystem.current.IsPointerOverGameObject();
     }
 }
