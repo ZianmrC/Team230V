@@ -56,10 +56,11 @@ public class GeneralPlug : MonoBehaviour, IDropHandler
     private RectTransform rect;
     public float moveSpeed = 500f;
     private bool stopTooltip;
+    private bool spoken;
 
     private void Start()
     {
-        numberOfCorrectPlaces = 0;
+        numberOfCorrectPlaces = 0; spoken = false;
         // ENSURE TO FIX THIS ONCE ACTUAL ASSETS MADE
         // Pick 2 Random Colors
         while (extensionCord2Color == null || extensionCord1Color == null)
@@ -189,6 +190,11 @@ public class GeneralPlug : MonoBehaviour, IDropHandler
             else if (!stopTooltip)
             {
                 tooltipText.enabled = true;
+                if (spoken == false)
+                {
+                    EventManager.PlayAudioSource("Mumbling");
+                    spoken = true;
+                }
                 tooltipText.text = "Having too many appliances on 1 cord \nis not safe. It's best to move some to another. \nClick and drag the colored plugs to the matching cords.";
                 if (numberOfCorrectPlaces >= 1)
                 {

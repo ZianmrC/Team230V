@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: -1701544926329340377}
   - component: {fileID: 3022832955586734254}
   - component: {fileID: 4763497787295188175}
-  - component: {fileID: -6895334339459027579}
+  - component: {fileID: -8935871317342952364}
+  - component: {fileID: 6049732872535815329}
   m_Layer: 0
   m_Name: FireTask
   m_TagString: Task
@@ -46,7 +47,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 1.5, z: 1}
+  m_Size: {x: 3, y: 3.5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3022832955586734254
 MonoBehaviour:
@@ -75,7 +76,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taskTimer: 0
   taskID: 2
---- !u!212 &-6895334339459027579
+--- !u!212 &-8935871317342952364
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,14 +117,35 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: afdab071c10feeb49832e23a88d9ec14, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 66d34479ec3d1d642bea7efcb0da93d6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.12, y: 0.65}
+  m_Size: {x: 6.62, y: 5.39}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &6049732872535815329
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2968953709381042183}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 57d16dcc0e1599e438c0f444fb2b99dc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

@@ -21,11 +21,12 @@ public class SinkTask : MonoBehaviour
     private RectTransform rect;
     public float moveSpeed = 500f;
     private bool stopTooltip;
+    private bool spoken = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        originPosition = new Vector2(-250, -696);
+        originPosition = new Vector2(-250, -696); spoken = false;
         endPosition = new Vector2(-250, -374);
         currentTimer = 0f; stopTooltip = false;
 
@@ -52,6 +53,11 @@ public class SinkTask : MonoBehaviour
             else if (!stopTooltip)
             {
                 text.enabled = true;
+                if (spoken == false)
+                {
+                    EventManager.PlayAudioSource("Mumbling");
+                    spoken = true;
+                }
                 text.text = "Click and drag the red handle in any direction. \nWe should turn this off before the \nsink is flooded with water, " +
                     "this could become very dangerous ";
                 stopTooltip = true;
@@ -61,6 +67,3 @@ public class SinkTask : MonoBehaviour
 
 
 }
-/* Water Tap image from:
- * https://www.vecteezy.com/vector-art/13330055-water-tap-faucet-icon-vector-design-template
- */

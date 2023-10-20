@@ -44,6 +44,7 @@ public class GeneralSwitches : MonoBehaviour
     public float moveSpeed = 500f;
     private bool stopTooltip;
     private float mascotTimer;
+    private bool spoken;
 
     // Start is called before the first frame update
     void Start()
@@ -111,7 +112,7 @@ public class GeneralSwitches : MonoBehaviour
         rect.anchoredPosition = originPosition;
         Transform textObject = transform.Find("Mascot/Container/Image/Text (TMP)");
         tooltipText = textObject.GetComponent<TextMeshProUGUI>();
-        mascotTimer = 0f; stopTooltip = false;
+        mascotTimer = 0f; stopTooltip = false; spoken = false;
     }
 
     // Update is called once per frame
@@ -171,7 +172,7 @@ public class GeneralSwitches : MonoBehaviour
                 }
                 bool allTrue = correctSequence.All(b => b == 2);
                 bool hasOne = correctSequence.Any(item => item == 1);
-                if(allTrue)
+                if (allTrue)
                 {
                     Debug.Log(taskID);
                     eventManager.ChecksTasksForID(taskID);
@@ -212,6 +213,11 @@ public class GeneralSwitches : MonoBehaviour
             else if (!stopTooltip)
             {
                 tooltipText.enabled = true;
+                if (spoken == false)
+                {
+                    EventManager.PlayAudioSource("Mumbling");
+                    spoken = true;
+                }
                 tooltipText.text = "Having switches on while not in use can be a hazard,\n making them really hot, hot enough for even a fire!\n Use the arrow keys shown to switch these off";
                 if (correctSequence[0] == 2)
                 {

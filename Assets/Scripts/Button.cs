@@ -42,6 +42,7 @@ public class Button : MonoBehaviour
 
     public void ChangeRoom()
     {
+        EventManager.PlayAudioSource("Footsteps");
         DetermineTargetRoom();
         gameCamera.Move(targetRoom);
     }
@@ -95,7 +96,7 @@ public class Button : MonoBehaviour
     {
         eventManager.ChecksTasksForID(taskID);
         eventManager.UpdateBoolArrayGivenID(taskID);
-        eventManager.AddScore(score);
+        //eventManager.AddScore(score);
         EventManager.menuOpened = false;
         Destroy(task);
     }

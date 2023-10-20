@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4763497787295188175}
   - component: {fileID: -6895334339459027579}
   m_Layer: 0
-  m_Name: SinkTask 1
+  m_Name: SinkTask
   m_TagString: Task
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
