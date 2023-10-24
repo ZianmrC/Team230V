@@ -106,8 +106,8 @@ public class GeneralSwitches : MonoBehaviour
         }
         timerText = timerTextObject.GetComponent<Text>();
 
-        originPosition = new Vector2(-220, -696);
-        endPosition = new Vector2(-220, -404);
+        originPosition = new Vector2(-300, -696);
+        endPosition = new Vector2(-300, -404);
         rect = switchMascot.GetComponent<RectTransform>();
         rect.anchoredPosition = originPosition;
         Transform textObject = transform.Find("Mascot/Container/Image/Text (TMP)");

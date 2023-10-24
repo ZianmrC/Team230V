@@ -54,6 +54,7 @@ public class EventManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Lives = 3; EventManager.Score = 0;
         originPosition = new Vector2(-1428, -253);
         endPosition = new Vector2(-682, -253);
         rect = Mascot.GetComponent<RectTransform>();
