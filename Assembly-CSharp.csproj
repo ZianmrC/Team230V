@@ -139,6 +139,7 @@
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\Components\GrainComponent.cs" />
     <Compile Include="Assets\Scripts\TaskScripts\MopTask.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\Models\UserLutModel.cs" />
+    <Compile Include="Assets\Scripts\TaskScripts\SinkTask\SinkDripAnimation.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\Standard Assets\Utility\WaypointProgressTracker.cs" />
     <Compile Include="Assets\Ron&apos;s Stuff\VIRTI\VOXEL-Forniture-FREE\Example\PostProcessing\Runtime\Models\MotionBlurModel.cs" />
     <Compile Include="Assets\Scripts\TaskScripts\WireTask\WireTaskDragPlug.cs" />

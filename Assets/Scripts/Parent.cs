@@ -28,7 +28,7 @@ public class Parent : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointer
     public void OnPointerDown(PointerEventData eventData)
     {
         originalPosition = rectTransform.localPosition;
-        Debug.Log(originalPosition);
+        //Debug.Log(originalPosition);
         RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform, eventData.position, eventData.pressEventCamera, out originalLocalPointerPosition);
         isDragging = true;
         canvasGroup.blocksRaycasts = false;
