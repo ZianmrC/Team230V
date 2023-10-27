@@ -227,6 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87db0af9f709be84d96519bd38e94a83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  game: {fileID: 0}
 --- !u!1 &5248018274222115887
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,9 +329,9 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
+    m_NormalColor: {r: 0, g: 0.427451, b: 0.5372549, a: 1}
+    m_HighlightedColor: {r: 0, g: 0.427451, b: 0.5372549, a: 1}
+    m_PressedColor: {r: 0, g: 0.5764706, b: 0.7137255, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -459,8 +460,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 17.083323, y: 139.58333}
-  m_SizeDelta: {x: 547.0952, y: 213.7979}
+  m_AnchoredPosition: {x: 18, y: 135}
+  m_SizeDelta: {x: 358.9028, y: 126.4228}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5248018274775400749
 CanvasRenderer:
@@ -795,9 +796,9 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_NormalColor: {r: 0, g: 0.427451, b: 0.5372549, a: 1}
+    m_HighlightedColor: {r: 0, g: 0.427451, b: 0.5372549, a: 1}
+    m_PressedColor: {r: 0, g: 0.5764706, b: 0.7137255, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
